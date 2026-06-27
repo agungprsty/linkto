@@ -47,7 +47,7 @@ class Settings(BaseSettings):
     aws_s3_bucket_name: str = Field(default="linkto-uploads", alias="AWS_S3_BUCKET_NAME")
     aws_s3_region: str = Field(default="ap-southeast-1", alias="AWS_S3_REGION")
     aws_s3_endpoint_url: Optional[str] = Field(default=None, alias="AWS_S3_ENDPOINT_URL")
-    upload_max_size_mb: int = Field(default=10, alias="UPLOAD_MAX_SIZE_MB")
+    upload_max_size_mb: int = Field(default=2, alias="UPLOAD_MAX_SIZE_MB")
 
     @property
     def upload_max_size_bytes(self) -> int:
