@@ -104,17 +104,18 @@ class TestCreateLink:
         assert data["type"] == "affiliate_product"
         assert data["image_url"] == "https://shop.com/product.jpg"
 
-    async def test_create_affiliate_missing_image(self, client: AsyncClient):
-        """Affiliate product without image_url should fail."""
+    async def test_create_affiliate_optional_image(self, client: AsyncClient):
+        """Affiliate product without image_url should succeed (image_url is optional)."""
         auth = await _register_and_login(client, "create3")
         h = {"Authorization": f"Bearer {auth['access_token']}"}
 
         response = await client.post("/api/v1/links", headers=h, json={
-            "title": "No Image",
+            "title": "No Image Product",
             "url": "https://shop.com/product",
             "type": "affiliate_product",
         })
-        assert response.status_code == 422
+        assert response.status_code == 201
+        assert response.json()["image_url"] is None
 
     async def test_create_invalid_url(self, client: AsyncClient):
         auth = await _register_and_login(client, "create4")

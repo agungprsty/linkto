@@ -80,11 +80,12 @@ async def app_exception_handler(request: Request, exc: AppException):
 
 
 # Import and include routers
-from src.api.v1.endpoints import auth, health, links  # noqa: E402
+from src.api.v1.endpoints import auth, health, links, uploads  # noqa: E402
 
 app.include_router(health.router, prefix="/api/v1")
 app.include_router(auth.router, prefix="/api/v1")
 app.include_router(links.router, prefix="/api/v1")
+app.include_router(uploads.router, prefix="/api/v1")
 
 
 @app.get("/")

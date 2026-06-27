@@ -41,6 +41,18 @@ class Settings(BaseSettings):
         alias="GOOGLE_REDIRECT_URI",
     )
 
+    # S3 / Uploads
+    aws_access_key_id: Optional[str] = Field(default=None, alias="AWS_ACCESS_KEY_ID")
+    aws_secret_access_key: Optional[str] = Field(default=None, alias="AWS_SECRET_ACCESS_KEY")
+    aws_s3_bucket_name: str = Field(default="linkto-uploads", alias="AWS_S3_BUCKET_NAME")
+    aws_s3_region: str = Field(default="ap-southeast-1", alias="AWS_S3_REGION")
+    aws_s3_endpoint_url: Optional[str] = Field(default=None, alias="AWS_S3_ENDPOINT_URL")
+    upload_max_size_mb: int = Field(default=10, alias="UPLOAD_MAX_SIZE_MB")
+
+    @property
+    def upload_max_size_bytes(self) -> int:
+        return self.upload_max_size_mb * 1024 * 1024
+
     @property
     def jwt_access_expire_seconds(self) -> int:
         return self.jwt_access_expire_minutes * 60

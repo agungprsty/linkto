@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List, Literal, Optional
 
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import BaseModel, Field, field_validator
 
 
 class CreateLinkRequest(BaseModel):
@@ -28,13 +28,6 @@ class CreateLinkRequest(BaseModel):
             if v and not v.startswith(("http://", "https://")):
                 raise ValueError("Image URL must start with http:// or https://")
         return v
-
-    @model_validator(mode="after")
-    def check_affiliate_image(self):
-        """Require image_url for affiliate_product type."""
-        if self.type == "affiliate_product" and not self.image_url:
-            raise ValueError("image_url is required for affiliate_product type")
-        return self
 
 
 class UpdateLinkRequest(BaseModel):
@@ -64,13 +57,6 @@ class UpdateLinkRequest(BaseModel):
             if v and not v.startswith(("http://", "https://")):
                 raise ValueError("Image URL must start with http:// or https://")
         return v
-
-    @model_validator(mode="after")
-    def check_affiliate_image(self):
-        """If type is changing to affiliate_product, require image_url."""
-        if self.type == "affiliate_product" and not self.image_url:
-            raise ValueError("image_url is required for affiliate_product type")
-        return self
 
 
 class LinkResponse(BaseModel):
