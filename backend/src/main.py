@@ -17,6 +17,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 from src.core.config import settings
 from src.core.exceptions import AppException
+from src.models.link import Link
 from src.models.user import User
 
 
@@ -35,6 +36,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator:
         database=database,
         document_models=[
             User,
+            Link,
         ],
     )
 
@@ -78,10 +80,11 @@ async def app_exception_handler(request: Request, exc: AppException):
 
 
 # Import and include routers
-from src.api.v1.endpoints import auth, health  # noqa: E402
+from src.api.v1.endpoints import auth, health, links  # noqa: E402
 
 app.include_router(health.router, prefix="/api/v1")
 app.include_router(auth.router, prefix="/api/v1")
+app.include_router(links.router, prefix="/api/v1")
 
 
 @app.get("/")
