@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkto - Neo Brutalism Landing & Clean Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#FFD800',
+                            pink: '#FF4DF8',
+                            blue: '#4D9FFF',
+                            green: '#00E676',
+                            bg: '#F3F3F1'
+                        }
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px 0px rgba(0,0,0,1)',
+                        'brutal-sm': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'brutal-hover': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'brutal-lg': '12px 12px 0px 0px rgba(0,0,0,1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Marquee Animation */
+        .animate-marquee {
+            animation: marquee 25s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-black antialiased overflow-x-hidden selection:bg-brand-pink selection:text-white">
+
+    <!-- ========================================== -->
+    <!-- 1. LANDING PAGE (NEO BRUTALISM)            -->
+    <!-- ========================================== -->
+    <div id="landing-page" class="block transition-opacity duration-300">
+        
+        <nav class="fixed top-0 w-full bg-brand-bg border-b-4 border-black z-50">
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-20 items-center">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                        <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center -rotate-12 hover:rotate-0 transition-transform">
+                            <i class="ph ph-link text-brand-yellow text-2xl font-bold"></i>
+                        </div>
+                        <span class="font-black text-3xl tracking-tight">Linkto.</span>
+                    </div>
+                    
+                    <!-- Desktop Menu (New) -->
+                    <div class="hidden xl:flex items-center gap-8 font-bold text-lg">
+                        <a href="#" class="hover:text-brand-pink hover:underline decoration-4 underline-offset-4 transition-colors">Products</a>
+                        <a href="#" class="hover:text-brand-blue hover:underline decoration-4 underline-offset-4 transition-colors">Templates</a>
+                        <a href="#" class="hover:text-brand-green hover:underline decoration-4 underline-offset-4 transition-colors">Marketplace</a>
+                        <a href="#" class="hover:text-brand-pink hover:underline decoration-4 underline-offset-4 transition-colors">Learn</a>
+                        <a href="#" class="hover:text-brand-blue hover:underline decoration-4 underline-offset-4 transition-colors">Pricing</a>
+                    </div>
+
+                    <!-- Right Actions -->
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="hidden md:block font-bold text-lg hover:underline decoration-4 underline-offset-4 bg-white border-2 border-transparent px-4 py-2 hover:border-black rounded-lg transition-all">Log in</a>
+                        <!-- Brutalist Button to Dashboard -->
+                        <button onclick="toggleView('dashboard')" class="bg-black text-white font-bold text-base md:text-lg px-6 py-3 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full flex items-center gap-2">
+                            Go to Dashboard <i class="ph ph-arrow-right font-bold"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-8 min-h-[70vh]">
+                <!-- Left Content -->
+                <div class="flex-1 text-center lg:text-left space-y-8 lg:pr-12">
+                    <div class="inline-block bg-white border-4 border-black px-4 py-1 rounded-full font-bold text-sm shadow-brutal-sm mb-4 rotate-2">
+                        🎉 V2.0 is now live for Affiliators
+                    </div>
+                    <h1 class="text-6xl sm:text-7xl lg:text-[5.5rem] font-black leading-[1.05] tracking-tight text-black">
+                        Everything you are. <br>
+                        <span class="bg-brand-yellow px-4 border-4 border-black shadow-brutal inline-block mt-4 -rotate-2 transform hover:rotate-2 transition-transform duration-300">In one link.</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl font-semibold text-gray-800 max-w-2xl mx-auto lg:mx-0">
+                        Join millions of creators, affiliates, and brands building their online hub. Fast, customizable, and ruthlessly optimized for conversions.
+                    </p>
+                    
+                    <!-- Brutalist Form/Input -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6">
+                        <div class="relative flex-grow max-w-sm">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-xl font-bold text-gray-400">linkto.com/</span>
+                            <input type="text" placeholder="yourname" class="w-full text-xl font-bold bg-white border-4 border-black shadow-brutal rounded-none py-5 pl-[135px] pr-4 focus:outline-none focus:ring-0 focus:translate-x-[4px] focus:translate-y-[4px] focus:shadow-brutal-hover transition-all">
+                        </div>
+                        <button class="bg-brand-pink text-black font-black text-xl px-10 py-5 border-4 border-black shadow-brutal hover:shadow-brutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all whitespace-nowrap">
+                            Claim Linkto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Visual (Neo Brutalism Abstract Mockup) -->
+                <div class="flex-1 relative w-full max-w-md lg:max-w-none flex justify-center lg:justify-end">
+                    <div class="relative w-80 h-[580px] bg-[#E8E8E8] border-[6px] border-black rounded-[3rem] shadow-brutal-lg p-5 flex flex-col gap-4 overflow-hidden z-10">
+                        <!-- Phone Notch -->
+                        <div class="w-32 h-6 bg-black rounded-b-2xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        
+                        <!-- Mock Content Inside Phone -->
+                        <div class="mt-8 flex flex-col items-center gap-3 relative z-10">
+                            <div class="w-28 h-28 bg-brand-blue border-4 border-black rounded-full shadow-brutal-sm overflow-hidden">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Agung" alt="Avatar" class="w-full h-full object-cover bg-white">
+                            </div>
+                            <h3 class="font-black text-2xl">@agung_dev</h3>
+                            <p class="font-bold text-sm text-center bg-white border-2 border-black px-3 py-1 rounded-full shadow-brutal-sm">Tech & Setup Reviewer</p>
+                        </div>
+
+                        <!-- Mock Links & Products -->
+                        <div class="flex-1 flex flex-col gap-3 mt-4 relative z-10 w-full overflow-y-auto no-scrollbar pb-6">
+                            <div class="w-full bg-white border-4 border-black shadow-brutal-sm p-3 font-bold text-center hover:-translate-y-1 transition-transform cursor-pointer">My Setup Tour (YouTube)</div>
+                            
+                            <!-- Mock Product Affiliate Grid -->
+                            <div class="grid grid-cols-2 gap-3 mt-2">
+                                <div class="bg-brand-yellow border-4 border-black shadow-brutal-sm flex flex-col aspect-square overflow-hidden hover:-translate-y-1 transition-transform cursor-pointer">
+                                    <div class="h-1/2 bg-white border-b-4 border-black flex items-center justify-center p-2">
+                                        <div class="w-full h-full bg-gray-200 rounded-sm"></div>
+                                    </div>
+                                    <div class="p-2 flex-1 flex items-center justify-center text-center font-bold text-[10px] leading-tight">Mechanical Keyboard</div>
+                                </div>
+                                <div class="bg-brand-green border-4 border-black shadow-brutal-sm flex flex-col aspect-square overflow-hidden hover:-translate-y-1 transition-transform cursor-pointer">
+                                    <div class="h-1/2 bg-white border-b-4 border-black flex items-center justify-center p-2">
+                                        <div class="w-full h-full bg-gray-200 rounded-sm"></div>
+                                    </div>
+                                    <div class="p-2 flex-1 flex items-center justify-center text-center font-bold text-[10px] leading-tight">Monitor Lightbar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-10 -right-4 lg:right-10 w-24 h-24 bg-brand-yellow border-4 border-black rounded-full shadow-brutal z-20 flex items-center justify-center -rotate-12">
+                        <span class="font-black text-2xl">#1</span>
+                    </div>
+                    <div class="absolute -bottom-10 left-0 lg:left-10 w-48 h-32 bg-brand-pink border-4 border-black shadow-brutal rotate-6 -z-0"></div>
+                </div>
+            </div>
+        </main>
+
+        <section class="bg-brand-blue border-y-4 border-black py-24 overflow-hidden relative">
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-black text-black inline-block bg-white border-4 border-black px-6 py-3 shadow-brutal rotate-1">
+                        More Than Just Links
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all">
+                        <div class="w-16 h-16 bg-brand-pink border-4 border-black rounded-full flex items-center justify-center mb-6 shadow-brutal-sm -rotate-6">
+                            <i class="ph ph-shopping-bag text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Affiliate Hub Built-In</h3>
+                        <p class="font-semibold text-gray-700 text-lg">Don't just share links. Build a visual storefront. Add products directly from marketplaces with our smart auto-scraper.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all">
+                        <div class="w-16 h-16 bg-brand-yellow border-4 border-black flex items-center justify-center mb-6 shadow-brutal-sm rotate-3">
+                            <i class="ph ph-chart-line-up text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Deep Analytics</h3>
+                        <p class="font-semibold text-gray-700 text-lg">Track what converts. See real-time clicks, views, and revenue. Integrate Meta & TikTok Pixels for advanced retargeting.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all">
+                        <div class="w-16 h-16 bg-brand-green border-4 border-black rounded-lg flex items-center justify-center mb-6 shadow-brutal-sm -rotate-3">
+                            <i class="ph ph-paint-roller text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Radical Customization</h3>
+                        <p class="font-semibold text-gray-700 text-lg">Your brand, your rules. Custom domains, dynamic themes, custom fonts, and Neo-Brutalist components available.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Background Decorations -->
+            <div class="absolute top-1/2 left-0 w-full h-8 bg-black -translate-y-1/2 -z-0"></div>
+        </section>
+
+        <footer class="bg-black pt-20 pb-10 text-white">
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
+                    <div class="col-span-2 md:col-span-2">
+                        <div class="flex items-center gap-2 mb-6">
+                            <div class="w-10 h-10 bg-brand-yellow border-2 border-brand-yellow rounded-full flex items-center justify-center text-black">
+                                <i class="ph ph-link text-2xl font-bold"></i>
+                            </div>
+                            <span class="font-black text-4xl">Linkto.</span>
+                        </div>
+                        <p class="font-semibold text-gray-400 text-lg max-w-sm">The only bio link you'll ever need. Designed for creators, built for conversion.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-black text-xl mb-6 text-brand-pink">Product</h4>
+                        <ul class="space-y-4 font-semibold text-gray-300">
+                            <li><a href="#" class="hover:text-white">Features</a></li>
+                            <li><a href="#" class="hover:text-white">Pricing</a></li>
+                            <li><a href="#" class="hover:text-white">Affiliate Hub</a></li>
+                            <li><a href="#" class="hover:text-white">Custom Domain</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-black text-xl mb-6 text-brand-blue">Resources</h4>
+                        <ul class="space-y-4 font-semibold text-gray-300">
+                            <li><a href="#" class="hover:text-white">Blog</a></li>
+                            <li><a href="#" class="hover:text-white">Help Center</a></li>
+                            <li><a href="#" class="hover:text-white">Community</a></li>
+                            <li><a href="#" class="hover:text-white">Templates</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-black text-xl mb-6 text-brand-green">Company</h4>
+                        <ul class="space-y-4 font-semibold text-gray-300">
+                            <li><a href="#" class="hover:text-white">About Us</a></li>
+                            <li><a href="#" class="hover:text-white">Careers</a></li>
+                            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t-4 border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="font-bold text-gray-500">© 2026 Linkto Inc. All rights reserved.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-brand-blue hover:text-black transition-colors"><i class="ph ph-twitter-logo text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-brand-pink hover:text-black transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-white hover:text-black transition-colors"><i class="ph ph-tiktok-logo text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 2. DASHBOARD (CLEAN & SIMPLE)              -->
+    <!-- ========================================== -->
+    <div id="dashboard-page" class="hidden h-screen bg-[#F9FAFB] flex overflow-hidden">
+        
+        <aside class="w-64 bg-white border-r border-gray-200 flex-shrink-0 hidden md:flex flex-col justify-between shadow-sm z-20">
+            <div class="flex flex-col h-full overflow-y-auto no-scrollbar">
+                <!-- Logo Dashboard -->
+                <div class="h-20 flex items-center px-6 border-b border-gray-100 cursor-pointer sticky top-0 bg-white" onclick="toggleView('landing')">
+                    <div class="w-8 h-8 bg-black rounded-xl flex items-center justify-center mr-3 hover:scale-105 transition-transform">
+                        <i class="ph ph-link text-white text-xl"></i>
+                    </div>
+                    <span class="font-black text-2xl tracking-tight">Linkto.</span>
+                </div>
+                
+                <!-- Expanded Nav Links -->
+                <nav class="p-4 space-y-1 flex-1">
+                    <p class="px-4 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-2">Content</p>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 bg-gray-100 text-black font-semibold rounded-xl">
+                        <i class="ph ph-list-dashes text-xl text-black"></i> Links
+                    </a>
+                    <!-- New Menu Items -->
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-50 hover:text-black transition-colors">
+                        <i class="ph ph-storefront text-xl"></i> Products <span class="ml-auto bg-brand-yellow text-black text-[10px] px-2 py-0.5 rounded-full font-bold">NEW</span>
+                    </a>
+                    
+                    <p class="px-4 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-6">Design & Data</p>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-50 hover:text-black transition-colors">
+                        <i class="ph ph-paint-brush text-xl"></i> Appearance
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-50 hover:text-black transition-colors">
+                        <i class="ph ph-chart-line-up text-xl"></i> Analytics
+                    </a>
+                    
+                    <p class="px-4 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-6">Advanced</p>
+                    <!-- New Menu Items -->
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-50 hover:text-black transition-colors">
+                        <i class="ph ph-handshake text-xl"></i> Affiliates
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-50 hover:text-black transition-colors">
+                        <i class="ph ph-plugs text-xl"></i> Integrations
+                    </a>
+                    
+                    <p class="px-4 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-6">Account</p>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-50 hover:text-black transition-colors">
+                        <i class="ph ph-gear text-xl"></i> Settings
+                    </a>
+                    <!-- New Menu Item -->
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-50 hover:text-black transition-colors">
+                        <i class="ph ph-credit-card text-xl"></i> Billing
+                    </a>
+                </nav>
+            </div>
+            
+            <!-- User Profile (Bottom) -->
+            <div class="p-4 border-t border-gray-100 bg-white sticky bottom-0">
+                <div class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 rounded-xl cursor-pointer border border-transparent hover:border-gray-200 transition-all">
+                    <div class="w-10 h-10 bg-gray-200 rounded-full overflow-hidden">
+                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Agung" alt="Avatar" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-semibold text-sm truncate text-black">Agung Dev</p>
+                        <p class="text-xs text-gray-500 truncate">linkto.com/agung</p>
+                    </div>
+                    <i class="ph ph-caret-up text-gray-400"></i>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col h-full overflow-hidden bg-[#F9FAFB]">
+            <!-- Mobile Header -->
+            <header class="md:hidden bg-white h-16 border-b border-gray-200 flex items-center justify-between px-4 z-20">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="toggleView('landing')">
+                    <div class="w-8 h-8 bg-black rounded-xl flex items-center justify-center">
+                        <i class="ph ph-link text-white text-lg font-bold"></i>
+                    </div>
+                    <span class="font-black text-xl">Linkto.</span>
+                </div>
+                <button class="text-gray-800 p-2 hover:bg-gray-100 rounded-lg"><i class="ph ph-list text-2xl"></i></button>
+            </header>
+
+            <div class="flex-1 overflow-y-auto p-4 sm:p-8 flex justify-center w-full">
+                <div class="w-full max-w-3xl space-y-6 pb-20">
+                    
+                    <!-- Alert Banner -->
+                    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 flex gap-4 items-start">
+                        <div class="bg-blue-500 text-white p-2 rounded-full mt-0.5">
+                            <i class="ph ph-info text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">New Feature: Smart Affiliate Scraper</h4>
+                            <p class="text-sm text-blue-800 mt-1">You can now paste a Shopee or Tokopedia link directly, and we will automatically fetch the image and title for your Storefront. <a href="#" class="font-bold underline">Try it now</a>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Top Action Bar -->
+                    <div class="flex flex-col sm:flex-row gap-4 items-center justify-between sticky top-0 z-10 bg-[#F9FAFB] py-2">
+                        <button class="w-full sm:w-auto bg-black text-white px-8 py-3.5 rounded-full font-semibold hover:bg-gray-800 hover:scale-[1.02] transition-all shadow-md flex items-center justify-center gap-2">
+                            <i class="ph ph-plus-circle text-xl"></i> Add Link
+                        </button>
+                        <div class="flex gap-2 w-full sm:w-auto">
+                            <button class="flex-1 sm:flex-none bg-white border border-gray-200 text-gray-700 px-5 py-3.5 rounded-full font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm text-sm flex items-center justify-center gap-2">
+                                <i class="ph ph-shopping-cart text-lg"></i> Add Product
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Link Items List -->
+                    <div class="space-y-4 pt-2">
+                        
+                        <!-- Link Card 1 (Standard) -->
+                        <div class="bg-white p-5 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-gray-200 flex items-start sm:items-center gap-4 transition-all hover:shadow-[0_8px_16px_rgba(0,0,0,0.06)] group">
+                            <div class="cursor-grab text-gray-300 hover:text-black mt-2 sm:mt-0 transition-colors">
+                                <i class="ph ph-dots-six-vertical text-2xl"></i>
+                            </div>
+                            <div class="flex-1 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <input type="text" value="Personal Portfolio & Blog" class="font-bold text-gray-900 bg-transparent border-none focus:ring-0 p-0 text-base w-full outline-none hover:bg-gray-50 focus:bg-gray-50 rounded px-2 -ml-2 transition-colors">
+                                    
+                                    <!-- Toggle Switch -->
+                                    <label class="relative inline-flex items-center cursor-pointer ml-2 flex-shrink-0">
+                                        <input type="checkbox" value="" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                                    </label>
+                                </div>
+                                <input type="text" value="https://agungdev.com" class="text-sm font-medium text-gray-500 bg-transparent border-none focus:ring-0 p-0 w-full outline-none hover:bg-gray-50 focus:bg-gray-50 rounded px-2 -ml-2 transition-colors">
+                                <div class="flex items-center gap-4 pt-3 text-gray-400">
+                                    <button class="hover:text-black transition-colors flex items-center gap-1 text-sm font-semibold"><i class="ph ph-image text-lg"></i> <span class="hidden sm:inline">Thumbnail</span></button>
+                                    <button class="hover:text-brand-blue transition-colors flex items-center gap-1 text-sm font-semibold"><i class="ph ph-chart-bar text-lg"></i> <span class="hidden sm:inline">1.2k Clicks</span></button>
+                                    <button class="hover:text-red-500 transition-colors ml-auto"><i class="ph ph-trash text-lg"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Link Card 2 (Affiliate Product) -->
+                        <div class="bg-white p-5 rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-gray-200 flex items-start sm:items-center gap-4 transition-all hover:shadow-[0_8px_16px_rgba(0,0,0,0.06)] group">
+                            <div class="cursor-grab text-gray-300 hover:text-black mt-2 sm:mt-0 transition-colors">
+                                <i class="ph ph-dots-six-vertical text-2xl"></i>
+                            </div>
+                            <!-- Product Thumbnail -->
+                            <div class="w-20 h-20 bg-gray-100 rounded-xl overflow-hidden flex-shrink-0 border border-gray-200 relative group-hover:border-gray-300 transition-colors">
+                                <img src="https://placehold.co/200x200/eeeeee/999999?text=Shirt" alt="Product" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 hidden group-hover:flex items-center justify-center cursor-pointer transition-all">
+                                    <i class="ph ph-camera text-white text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <input type="text" value="Kemeja Flannel Pria Premium" class="font-bold text-gray-900 bg-transparent border-none focus:ring-0 p-0 text-base w-full outline-none hover:bg-gray-50 focus:bg-gray-50 rounded px-2 -ml-2 transition-colors">
+                                    <label class="relative inline-flex items-center cursor-pointer ml-2 flex-shrink-0">
+                                        <input type="checkbox" value="" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="text" value="https://shopee.co.id/product/123/456" class="text-sm font-medium text-gray-500 bg-transparent border-none focus:ring-0 p-0 w-full outline-none hover:bg-gray-50 focus:bg-gray-50 rounded px-2 -ml-2 transition-colors">
+                                </div>
+                                <div class="flex items-center gap-3 pt-2">
+                                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2.5 py-1 rounded-md font-bold flex items-center gap-1 border border-yellow-200">
+                                        <i class="ph ph-shopping-bag"></i> Affiliate Product
+                                    </span>
+                                    <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md font-bold">Rp 125.000</span>
+                                    <button class="hover:text-red-500 transition-colors ml-auto text-gray-400"><i class="ph ph-trash text-lg"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="hidden lg:flex w-[420px] border-l border-gray-200 bg-white flex-col items-center justify-center p-8 z-10 shadow-[-4px_0_24px_rgba(0,0,0,0.02)]">
+            <div class="flex items-center justify-between w-full max-w-[300px] mb-6">
+                <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Live Preview</span>
+                <a href="#" class="text-sm font-bold text-brand-blue flex items-center gap-1 hover:underline bg-blue-50 px-3 py-1.5 rounded-full"><i class="ph ph-arrow-square-out"></i> linkto.com/agung</a>
+            </div>
+            
+            <!-- Phone Frame Design (More realistic) -->
+            <div class="relative w-[300px] h-[620px] bg-black rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-2">
+                <!-- Inner Screen -->
+                <div class="w-full h-full bg-[#F3F4F6] rounded-[2.5rem] overflow-hidden relative border border-gray-800">
+                    
+                    <!-- Dynamic Island / Notch -->
+                    <div class="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-30"></div>
+
+                    <!-- Screen Content (Minimalist Theme) -->
+                    <div class="w-full h-full overflow-y-auto no-scrollbar pb-10 relative z-10">
+                        <!-- Profile Header -->
+                        <div class="pt-14 pb-6 flex flex-col items-center px-4">
+                            <div class="w-24 h-24 bg-gray-200 rounded-full overflow-hidden shadow-sm mb-4 border-2 border-white">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Agung" alt="Avatar" class="w-full h-full object-cover">
+                            </div>
+                            <h2 class="font-black text-xl text-gray-900 tracking-tight">@agung_dev</h2>
+                            <p class="text-sm font-medium text-gray-600 text-center mt-2 max-w-[200px] leading-relaxed">Tech Reviewer & Software Engineer. Find my setup below! 👇</p>
+                            
+                            <!-- Social Icons -->
+                            <div class="flex gap-3 mt-4">
+                                <div class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-700"><i class="ph ph-instagram-logo"></i></div>
+                                <div class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-700"><i class="ph ph-tiktok-logo"></i></div>
+                                <div class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-700"><i class="ph ph-youtube-logo"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Links & Products Grid -->
+                        <div class="px-5 space-y-3">
+                            <!-- Standard Link -->
+                            <a href="#" class="block w-full bg-white border border-gray-100 rounded-2xl p-4 text-center text-sm font-bold text-gray-800 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:scale-[1.02] transition-transform">
+                                Personal Portfolio & Blog
+                            </a>
+                            
+                            <!-- Category Header -->
+                            <h3 class="font-bold text-sm text-gray-900 pt-3 pb-1">My Desk Setup</h3>
+
+                            <!-- Product Affiliate Preview (Grid Style) -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-white border border-gray-100 rounded-2xl p-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:scale-[1.02] transition-transform flex flex-col">
+                                    <div class="w-full aspect-square bg-gray-100 rounded-xl overflow-hidden mb-2">
+                                        <img src="https://placehold.co/200x200/eeeeee/999999?text=Shirt" class="w-full h-full object-cover">
+                                    </div>
+                                    <p class="text-[11px] font-bold text-gray-800 line-clamp-2 leading-tight">Kemeja Flannel Pria Premium</p>
+                                    <p class="text-[11px] text-gray-500 font-semibold mt-1">Rp 125.000</p>
+                                </div>
+                                <div class="bg-white border border-gray-100 rounded-2xl p-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:scale-[1.02] transition-transform flex flex-col">
+                                    <div class="w-full aspect-square bg-gray-100 rounded-xl overflow-hidden mb-2">
+                                        <img src="https://placehold.co/200x200/eeeeee/999999?text=Keyboard" class="w-full h-full object-cover">
+                                    </div>
+                                    <p class="text-[11px] font-bold text-gray-800 line-clamp-2 leading-tight">Mechanical Keyboard 65% Wireless</p>
+                                    <p class="text-[11px] text-gray-500 font-semibold mt-1">Rp 750.000</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10 text-center pb-6">
+                            <span class="text-[10px] font-black tracking-widest uppercase text-gray-400">Powered by Linkto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        function toggleView(view) {
+            const landingPage = document.getElementById('landing-page');
+            const dashboardPage = document.getElementById('dashboard-page');
+
+            // Add simple fade animation logic
+            if (view === 'dashboard') {
+                landingPage.classList.add('opacity-0');
+                setTimeout(() => {
+                    landingPage.classList.add('hidden');
+                    landingPage.classList.remove('opacity-0');
+                    dashboardPage.classList.remove('hidden');
+                    // Trigger reflow
+                    void dashboardPage.offsetWidth; 
+                }, 300);
+            } else {
+                dashboardPage.classList.add('hidden');
+                landingPage.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
