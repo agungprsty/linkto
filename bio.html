@@ -3,405 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>John Doe — Linkto</title>
+    <title>Comedy Central | Linktree</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    },
                     colors: {
-                        brand: { yellow: '#FFD800', pink: '#FF4DF8', blue: '#4D9FFF', green: '#00E676', bg: '#F3F3F1' }
+                        brand: {
+                            bg: '#B4B4B4',      /* Desktop outer background */
+                            card: '#F9F9F9',    /* Inner card background */
+                            text: '#000000',
+                            linkBg: '#FFFFFF',
+                            purple: '#7960F1',  /* Floating icon purple */
+                            gold: '#DDA835'     /* Verified badge gold */
+                        }
+                    },
+                    boxShadow: {
+                        'link': '0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.02)',
+                        'float': '0 4px 12px rgba(121, 96, 241, 0.4)',
+                        'join': '0 8px 24px rgba(0, 0, 0, 0.08)',
                     }
                 }
             }
         }
     </script>
+    
     <style>
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
+            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            background-color: #B4B4B4; /* Gray background for desktop view */
+        }
+        
+        /* Subtle Noise/Grain Texture for the main card */
+        .bg-noise {
+            background-color: #FAFAFA;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
-        /* Main container — clean, centered, max 580px */
-        .bio-container {
-            width: 100%;
-            max-width: 580px;
-            padding: 48px 24px 32px;
+        /* Hover animation for links */
+        .link-card {
+            transition: transform 0.15s cubic-bezier(0, 0, 0.2, 1);
+        }
+        .link-card:hover {
+            transform: scale(1.02);
         }
 
-        /* Avatar — clean circle, subtle border */
-        .bio-avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #e5e7eb;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Display name */
-        .bio-name {
-            font-size: 24px;
-            font-weight: 700;
-            color: #111;
-            line-height: 1.3;
-            margin-top: 16px;
-        }
-
-        /* Bio description */
-        .bio-desc {
-            font-size: 15px;
-            font-weight: 400;
-            color: #666;
-            line-height: 1.5;
-            margin-top: 8px;
-            max-width: 420px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Social icons row */
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            transition: all 0.2s ease;
-            background: transparent;
-        }
-        .social-link:hover {
-            color: #111;
-            background: #f5f5f5;
-            transform: scale(1.05);
-        }
-
-        /* Link button — pill shape, clean, subtle shadow */
-        .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 16px 24px;
-            background: #ffffff;
-            border: none;
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #111;
-            text-decoration: none;
-            box-shadow:
-                0 1px 2px rgba(0, 0, 0, 0.04),
-                0 2px 4px rgba(0, 0, 0, 0.04),
-                0 4px 12px rgba(0, 0, 0, 0.04);
-            transition: all 0.2s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        .link-btn:hover {
-            background: #f7f7f7;
-            box-shadow:
-                0 2px 4px rgba(0, 0, 0, 0.06),
-                0 4px 8px rgba(0, 0, 0, 0.06),
-                0 8px 20px rgba(0, 0, 0, 0.06);
-            transform: translateY(-1px);
-        }
-        .link-btn:active {
-            transform: translateY(0px);
-            box-shadow:
-                0 1px 2px rgba(0, 0, 0, 0.04),
-                0 2px 4px rgba(0, 0, 0, 0.04);
-            background: #f0f0f0;
-        }
-
-        /* Button with colored background variant */
-        .link-btn-primary {
-            background: #111;
-            color: #fff;
-            box-shadow:
-                0 1px 2px rgba(0, 0, 0, 0.08),
-                0 2px 4px rgba(0, 0, 0, 0.08),
-                0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        .link-btn-primary:hover {
-            background: #2a2a2a;
-            color: #fff;
-        }
-        .link-btn-primary:active {
-            background: #000;
-        }
-
-        /* Affiliate product card */
-        .affiliate-card {
-            background: #fff;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow:
-                0 1px 2px rgba(0, 0, 0, 0.04),
-                0 2px 4px rgba(0, 0, 0, 0.04),
-                0 4px 12px rgba(0, 0, 0, 0.04);
-            transition: all 0.2s ease;
-        }
-        .affiliate-card:hover {
-            box-shadow:
-                0 2px 4px rgba(0, 0, 0, 0.06),
-                0 4px 8px rgba(0, 0, 0, 0.06),
-                0 8px 20px rgba(0, 0, 0, 0.06);
-            transform: translateY(-1px);
-        }
-
-        /* Divider */
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 24px 0;
-        }
-        .divider-line {
-            flex: 1;
-            height: 1px;
-            background: #e5e7eb;
-        }
-        .divider-icon {
-            color: #d1d5db;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        /* Footer */
-        .bio-footer {
-            margin-top: 32px;
-            text-align: center;
-            font-size: 13px;
-            color: #aaa;
-            font-weight: 500;
-        }
-        .bio-footer a {
-            color: #999;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .bio-footer a:hover {
-            color: #111;
-        }
-        .bio-footer .dot {
-            display: inline-block;
-            margin: 0 8px;
-            color: #ddd;
-        }
-
-        /* Gap between links */
-        .links-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            .bio-container {
-                padding: 32px 20px 24px;
-            }
-            .bio-name {
-                font-size: 22px;
-            }
-            .bio-desc {
-                font-size: 14px;
-            }
-            .link-btn {
-                padding: 14px 20px;
-                font-size: 14px;
-                border-radius: 12px;
-            }
-            .bio-avatar {
-                width: 80px;
-                height: 80px;
-            }
-            .affiliate-card .product-image {
-                width: 100px;
-            }
-        }
+        /* Hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex justify-center items-start sm:py-10">
 
-    <!-- ========================================== -->
-    <!-- BIO PAGE — SOFT & ELEGANT                   -->
-    <!-- ========================================== -->
-    <div class="bio-container">
+    <!-- Main Container (Mobile full width, Desktop rounded card) -->
+    <main class="w-full sm:max-w-[480px] bg-noise min-h-screen sm:min-h-0 sm:rounded-[40px] shadow-2xl relative overflow-hidden flex flex-col items-center pb-8">
+        
+        <!-- Header: Top Navigation -->
+        <header class="w-full flex justify-between items-center px-5 py-4">
+            <!-- Left Logo/Icon (Starburst) -->
+            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/5 transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0L13.5 8.5L22 10L14.5 13.5L16 22L12 16L8 22L9.5 13.5L2 10L10.5 8.5L12 0Z" />
+                </svg>
+            </button>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-3">
+                <button class="text-[13px] font-semibold text-black bg-black/5 hover:bg-black/10 px-4 py-2 rounded-full transition-colors">
+                    Subscribe
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                        <polyline points="16 6 12 2 8 6"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="15"></line>
+                    </svg>
+                </button>
+            </div>
+        </header>
 
         <!-- Profile Section -->
-        <div class="text-center">
-
-            <!-- Avatar -->
-            <div class="inline-block relative">
-                <div class="bio-avatar mx-auto flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-                    <span class="font-bold text-2xl text-gray-400">JD</span>
+        <div class="flex flex-col items-center mt-2 mb-6 px-4">
+            <!-- Avatar with Verified Badge -->
+            <div class="relative">
+                <!-- Grey Avatar Circle -->
+                <div class="w-[96px] h-[96px] rounded-full bg-[#B1B1B1] overflow-hidden flex items-end justify-center">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform translate-y-2">
+                        <!-- Shoulders -->
+                        <path d="M15 100C15 65 30 55 50 55C70 55 85 65 85 100" fill="#EAEAEA"/>
+                        <!-- Head -->
+                        <circle cx="50" cy="35" r="20" fill="#EAEAEA"/>
+                    </svg>
+                </div>
+                <!-- Verified Checkmark -->
+                <div class="absolute bottom-0 right-0 w-6 h-6 bg-brand-gold rounded-full border-2 border-[#F9F9F9] flex items-center justify-center z-10">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
                 </div>
             </div>
-
-            <!-- Name -->
-            <h1 class="bio-name">John Doe</h1>
-
-            <!-- Bio -->
-            <p class="bio-desc">
-                Digital creator &amp; affiliate marketer. Helping you grow your online presence with honest reviews and proven strategies.
-            </p>
-
-            <!-- Social Links Row -->
-            <div class="flex items-center justify-center gap-1 mt-5">
-                <a href="#" class="social-link" aria-label="Instagram"><i class="ph ph-instagram-logo text-xl"></i></a>
-                <a href="#" class="social-link" aria-label="TikTok"><i class="ph ph-tiktok-logo text-xl"></i></a>
-                <a href="#" class="social-link" aria-label="Twitter"><i class="ph ph-twitter-logo text-xl"></i></a>
-                <a href="#" class="social-link" aria-label="YouTube"><i class="ph ph-youtube-logo text-xl"></i></a>
-            </div>
+            
+            <!-- Profile Name -->
+            <h1 class="text-[22px] font-bold text-black mt-4 tracking-tight">Comedy Central</h1>
         </div>
 
-        <!-- Divider -->
-        <div class="divider">
-            <span class="divider-line"></span>
-            <i class="ph ph-link-simple divider-icon"></i>
-            <span class="divider-line"></span>
-        </div>
-
-        <!-- ======== LINKS STACK ======== -->
-        <div class="links-stack">
-
-            <!-- Standard Link -->
-            <a href="#" onclick="trackClick('link-1', event)" class="link-btn">
-                <i class="ph ph-shopping-bag text-lg"></i>
-                Shop My Favorites
+        <!-- Links Section -->
+        <div class="w-full px-4 space-y-3 relative">
+            
+            <!-- Link 1: Paramount+ -->
+            <a href="#" class="link-card w-full bg-white rounded-[28px] p-2 pr-4 flex items-center min-h-[64px] shadow-link group">
+                <div class="w-12 h-12 rounded-xl bg-[#0064FF] flex-shrink-0 flex items-center justify-center overflow-hidden">
+                    <!-- Paramount Logo Mock -->
+                    <svg viewBox="0 0 40 40" fill="white" class="w-8 h-8">
+                        <path d="M20 10L10 25H30L20 10Z"/><circle cx="20" cy="20" r="18" stroke="white" stroke-width="2" fill="none" stroke-dasharray="4 2"/>
+                    </svg>
+                </div>
+                <div class="flex-1 text-center px-2">
+                    <span class="font-semibold text-[14px] text-black leading-tight">Stream Comedy Central Shows on Paramount+</span>
+                </div>
+                <div class="w-6 flex justify-end text-gray-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+                </div>
             </a>
 
-            <!-- Standard Link (Dark primary) -->
-            <a href="#" onclick="trackClick('link-2', event)" class="link-btn link-btn-primary">
-                <i class="ph ph-video text-lg"></i>
-                Latest YouTube Video
-                <span class="ml-auto text-xs font-medium opacity-60">NEW</span>
+            <!-- Link 2: Tales From The Trip Merch -->
+            <a href="#" class="link-card w-full bg-white rounded-[28px] p-2 pr-4 flex items-center min-h-[64px] shadow-link group">
+                <div class="w-12 h-12 rounded-xl bg-[#1A1A24] flex-shrink-0 flex items-center justify-center overflow-hidden relative">
+                    <!-- Colorful abstract mock -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-purple-500 via-pink-500 to-yellow-500 opacity-60 rounded-full blur-[4px] transform scale-50"></div>
+                </div>
+                <div class="flex-1 text-center px-2">
+                    <span class="font-semibold text-[14px] text-black leading-tight">Tales From The Trip Merch</span>
+                </div>
+                <div class="w-6 flex justify-end text-gray-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+                </div>
             </a>
 
-            <!-- Standard Link -->
-            <a href="#" onclick="trackClick('link-3', event)" class="link-btn">
-                <i class="ph ph-newspaper-clipping text-lg"></i>
-                Newsletter — Join 10K+ Readers
-            </a>
-
-            <!-- Affiliate Product Card (Horizontal) -->
-            <div class="affiliate-card">
-                <a href="#" onclick="trackClick('aff-1', event)" class="flex items-stretch no-underline text-inherit">
-                    <!-- Product Image -->
-                    <div class="product-image w-24 sm:w-28 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center flex-shrink-0">
-                        <i class="ph ph-headphones text-3xl sm:text-4xl text-blue-400"></i>
+            <!-- Link 3: Comedy Central Merch Store (Has Floating Icon) -->
+            <div class="relative w-full">
+                <a href="#" class="link-card w-full bg-white rounded-[28px] p-2 pr-4 flex items-center min-h-[64px] shadow-link group">
+                    <div class="w-12 h-12 rounded-xl bg-black flex-shrink-0 flex items-center justify-center">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#FFCC00" stroke-width="4" class="w-6 h-6"><circle cx="12" cy="12" r="10"/><path d="M16 8A6 6 0 1 0 16 16"/></svg>
                     </div>
-                    <!-- Product Info -->
-                    <div class="flex-1 p-4 sm:p-5 flex flex-col justify-center min-w-0">
-                        <span class="text-[11px] font-semibold text-green-600 uppercase tracking-wider mb-1">Affiliate Pick</span>
-                        <h3 class="font-bold text-sm sm:text-base truncate">Sony WH-1000XM5</h3>
-                        <p class="text-gray-500 text-xs sm:text-sm truncate">Best noise-canceling headphones</p>
-                        <div class="flex items-center justify-between mt-2">
-                            <span class="font-bold text-base sm:text-lg text-gray-900">$349</span>
-                            <span class="text-xs font-semibold text-gray-600 flex items-center gap-1 group">
-                                Shop Now <i class="ph ph-arrow-right group-hover:translate-x-0.5 transition-transform"></i>
-                            </span>
-                        </div>
+                    <div class="flex-1 text-center px-2">
+                        <span class="font-semibold text-[14px] text-black leading-tight">Comedy Central Merch Store</span>
+                    </div>
+                    <div class="w-6 flex justify-end text-gray-300">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
                     </div>
                 </a>
             </div>
 
-            <!-- Affiliate Product Card (Stacked) -->
-            <div class="affiliate-card">
-                <a href="#" onclick="trackClick('aff-2', event)" class="no-underline text-inherit block">
-                    <div class="h-32 sm:h-36 bg-gradient-to-br from-pink-50 to-yellow-50 flex items-center justify-center">
-                        <i class="ph ph-backpack text-4xl sm:text-5xl text-gray-400"></i>
-                    </div>
-                    <div class="p-4 sm:p-5">
-                        <span class="text-[11px] font-semibold text-amber-600 uppercase tracking-wider mb-1">Staff Pick</span>
-                        <h3 class="font-bold text-sm sm:text-base">Nike Air Max 270</h3>
-                        <p class="text-gray-500 text-xs sm:text-sm">Comfort meets style — my daily driver</p>
-                        <div class="flex items-center justify-between mt-2">
-                            <span class="font-bold text-base sm:text-lg text-gray-900">$185</span>
-                            <span class="text-xs font-semibold bg-gray-900 text-white px-4 py-1.5 rounded-full hover:bg-gray-800 transition-colors flex items-center gap-1">
-                                Buy Now <i class="ph ph-arrow-right"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Standard Link (with icon right) -->
-            <a href="#" onclick="trackClick('link-4', event)" class="link-btn">
-                <i class="ph ph-calendar text-lg"></i>
-                Book a Call With Me
-                <span class="ml-auto"><i class="ph ph-arrow-up-right text-lg"></i></span>
+            <!-- Link 4: Comedy Central YouTube -->
+            <a href="#" class="link-card w-full bg-white rounded-[28px] p-2 pr-4 flex items-center min-h-[64px] shadow-link group">
+                <div class="w-12 h-12 rounded-xl bg-white border border-gray-100 flex-shrink-0 flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" fill="#FF0000" class="w-8 h-8"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </div>
+                <div class="flex-1 text-center px-2">
+                    <span class="font-semibold text-[14px] text-black leading-tight">Comedy Central YouTube</span>
+                </div>
+                <div class="w-6 flex justify-end text-gray-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+                </div>
             </a>
 
-            <!-- Standard Link (Minimal) -->
-            <a href="#" onclick="trackClick('link-5', event)" class="link-btn">
-                View My Portfolio
-                <span class="ml-auto"><i class="ph ph-arrow-right text-lg"></i></span>
+            <!-- Link 5: Animated YouTube -->
+            <a href="#" class="link-card w-full bg-white rounded-[28px] p-2 pr-4 flex items-center min-h-[64px] shadow-link group">
+                <div class="w-12 h-12 rounded-xl bg-white border border-gray-100 flex-shrink-0 flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#C9A86A" stroke-width="4" class="w-7 h-7" style="filter: drop-shadow(1px 1px 0px black);"><circle cx="12" cy="12" r="10"/><path d="M16 8A6 6 0 1 0 16 16"/></svg>
+                </div>
+                <div class="flex-1 text-center px-2">
+                    <span class="font-semibold text-[14px] text-black leading-tight">Animated YouTube</span>
+                </div>
+                <div class="w-6 flex justify-end text-gray-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+                </div>
             </a>
 
+            <!-- Link 6: Stand-Up YouTube -->
+            <a href="#" class="link-card w-full bg-white rounded-[28px] p-2 pr-4 flex items-center min-h-[64px] shadow-link group">
+                <div class="w-12 h-12 rounded-xl bg-black flex-shrink-0 flex items-center justify-center px-1">
+                    <span class="text-white font-black text-[9px] leading-tight text-center">STAND-<br>UP</span>
+                </div>
+                <div class="flex-1 text-center px-2">
+                    <span class="font-semibold text-[14px] text-black leading-tight">Stand-Up YouTube</span>
+                </div>
+                <div class="w-6 flex justify-end text-gray-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+                </div>
+            </a>
+
+            <!-- Link 7: cc.com -->
+            <a href="#" class="link-card w-full bg-white rounded-[28px] p-2 pr-4 flex items-center min-h-[64px] shadow-link group mb-8">
+                <div class="w-12 h-12 rounded-xl bg-black flex-shrink-0 flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#FFCC00" stroke-width="4" class="w-6 h-6"><circle cx="12" cy="12" r="10"/><path d="M16 8A6 6 0 1 0 16 16"/></svg>
+                </div>
+                <div class="flex-1 text-center px-2">
+                    <span class="font-semibold text-[14px] text-black leading-tight">cc.com</span>
+                </div>
+                <div class="w-6 flex justify-end text-gray-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+                </div>
+            </a>
         </div>
 
-        <!-- ======== FOOTER ======== -->
-        <div class="bio-footer">
-            <a href="index.html">linkto.com/johndoe</a>
-            <span class="dot">•</span>
-            <a href="#">Cookie Preferences</a>
-            <span class="dot">•</span>
-            <a href="#">Privacy</a>
-            <div class="mt-3">
-                <a href="index.html" class="inline-flex items-center gap-1.5 text-gray-400 hover:text-gray-600 transition-colors">
-                    <svg width="14" height="14" viewBox="0 0 28 28" fill="currentColor"><path d="m15.7603 6.829 4.6725-4.80317 2.712 2.77734-4.9012 4.67248h6.8944v3.85565h-6.9271l4.9339 4.7922-2.712 2.7229-6.6983-6.731-6.69829 6.731-2.712-2.712 4.93387-4.7923h-6.92703v-3.86645h6.89436l-4.9012-4.67248 2.712-2.77734 4.67249 4.80317v-6.829h4.0516zm-4.0516 12.0243h4.0516v9.1489h-4.0516z"/></svg>
-                    Powered by <span class="font-semibold text-gray-500">Linkto</span>
-                </a>
+        <!-- Social Icons (Pixel-perfect matches) -->
+        <div class="flex items-center justify-center gap-6 mt-8 mb-20">
+            <!-- Facebook -->
+            <a href="#" class="text-black hover:scale-110 transition-transform">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" class="text-black hover:scale-110 transition-transform">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- TikTok -->
+            <a href="#" class="text-black hover:scale-110 transition-transform">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.78-1.15 5.54-3.33 7.65-2.22 2.14-5.08 3.24-8.15 3.12-3.14-.13-6.13-1.6-8.17-4.11-2.02-2.48-2.91-5.75-2.52-8.91.4-3.18 2.05-6.09 4.56-8.08 2.47-1.94 5.6-2.73 8.7-2.31v4.21c-2.2-.2-4.48.24-6.31 1.49-1.87 1.29-3.08 3.33-3.31 5.59-.22 2.19.46 4.43 1.95 6.06 1.44 1.57 3.51 2.42 5.68 2.37 2.15-.05 4.19-1.04 5.56-2.65 1.35-1.57 2.1-3.61 2.05-5.71-.04-4.88-.02-9.76-.02-14.64z"/></svg>
+            </a>
+            <!-- YouTube -->
+            <a href="#" class="text-black hover:scale-110 transition-transform">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <!-- X (Twitter) -->
+            <a href="#" class="text-black hover:scale-110 transition-transform">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+        </div>
+
+        <!-- Footer / Branding -->
+        <div class="mt-auto w-full flex flex-col items-center pb-4 px-4">
+            <!-- Large Action Button -->
+            <button class="bg-white text-black font-bold text-[15px] py-4 px-8 rounded-full shadow-join hover:scale-105 transition-transform mb-8">
+                Join comedycentral on Linktree
+            </button>
+
+            <!-- Bottom Tiny Links -->
+            <div class="flex flex-wrap justify-center items-center gap-x-2 gap-y-1 text-[11px] text-gray-500 font-medium">
+                <a href="#" class="hover:underline">Cookie Preferences</a>
+                <span>•</span>
+                <a href="#" class="hover:underline">Report</a>
+                <span>•</span>
+                <a href="#" class="hover:underline">Privacy</a>
+                <div class="w-full h-0"></div> <!-- Break line -->
+                <a href="#" class="hover:underline">Explore</a>
+                <span>•</span>
+                <a href="#" class="hover:underline">About this account</a>
+                <span>•</span>
+                <a href="#" class="hover:underline">More from Linktree</a>
             </div>
         </div>
 
-    </div>
-
-    <!-- ========================================== -->
-    <!-- TRACKING (fire-and-forget)                  -->
-    <!-- ========================================== -->
-    <script>
-        function trackPageView() {
-            const payload = {
-                username: 'johndoe',
-                referrer: document.referrer || 'direct',
-                user_agent: navigator.userAgent,
-                device: /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop'
-            };
-            console.log('[TRACK] Page View:', payload);
-            // fetch('https://api.linkto.com/api/v1/track/view', { method: 'POST', body: JSON.stringify(payload), keepalive: true })
-        }
-
-        function trackClick(linkId, event) {
-            const payload = {
-                username: 'johndoe',
-                link_id: linkId,
-                timestamp: new Date().toISOString(),
-                page_url: window.location.href
-            };
-            console.log('[TRACK] Link Click:', payload);
-            // fetch('https://api.linkto.com/api/v1/track/click', { method: 'POST', body: JSON.stringify(payload), keepalive: true })
-            return true;
-        }
-
-        document.addEventListener('DOMContentLoaded', trackPageView);
-    </script>
+    </main>
 
 </body>
 </html>
