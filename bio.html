@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Comedy Central | Linktree</title>
+    <title>Comedy Central | Linkto</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -80,7 +80,7 @@
                 <button class="text-[13px] font-semibold text-black bg-black/5 hover:bg-black/10 px-4 py-2 rounded-full transition-colors">
                     Subscribe
                 </button>
-                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors">
+                <button id="shareBtn" class="w-10 h-10 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors" aria-label="Share profile">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
                         <polyline points="16 6 12 2 8 6"></polyline>
@@ -216,8 +216,129 @@
             </a>
         </div>
 
+        <!-- ======== AFFILIATE PRODUCTS ======== -->
+        <div class="w-full px-4 mt-6 mb-6" id="affiliateSection">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="flex-1 h-px bg-gray-200"></div>
+                <span class="text-[11px] font-semibold text-gray-400 uppercase tracking-[0.15em]">Affiliate Picks</span>
+                <div class="flex-1 h-px bg-gray-200"></div>
+            </div>
+
+            <!-- Search Filter -->
+            <div class="relative mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input id="productSearch" type="text" placeholder="Search products..." class="w-full bg-white/80 border-0 rounded-2xl py-3 pl-10 pr-4 text-[13px] font-medium text-black placeholder:text-gray-400 outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-gray-400 transition-all">
+            </div>
+
+            <!-- Horizontal scrollable product row -->
+            <div id="productRow" class="flex gap-3 overflow-x-auto no-scrollbar pb-2 -mx-4 px-4 snap-x snap-mandatory">
+                
+                <!-- Product 1 -->
+                <div class="affiliate-item flex-shrink-0 w-[150px] snap-start" data-name="Sony WH-1000XM5 headphones" data-price="349" data-category="audio">
+                    <a href="https://amazon.com/dp/example1?tag=comedycentral-20" target="_blank" rel="noopener noreferrer nofollow" onclick="trackClick('affiliate-sony', event)" class="block bg-white rounded-[20px] overflow-hidden shadow-link hover:scale-[1.02] transition-transform no-underline text-inherit">
+                        <div class="h-[110px] bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#4D9FFF" stroke-width="1.5" class="opacity-70"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+                            <span class="absolute top-2 left-2 text-[8px] font-bold text-white bg-black/60 rounded-full px-2 py-0.5 uppercase tracking-wider">Affiliate</span>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[11px] font-semibold text-gray-500 truncate">Sony WH-1000XM5</p>
+                            <p class="text-[14px] font-bold text-black mt-0.5">$349 <span class="text-[10px] font-normal text-gray-400 line-through ml-1">$399</span></p>
+                            <span class="mt-1.5 text-[10px] font-semibold text-white bg-black rounded-full px-3 py-1 inline-block hover:bg-gray-800 transition-colors">Get Deal →</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="affiliate-item flex-shrink-0 w-[150px] snap-start" data-name="Casio G-Shock DW5600 watch" data-price="99" data-category="accessories">
+                    <a href="https://amazon.com/dp/example2?tag=comedycentral-20" target="_blank" rel="noopener noreferrer nofollow" onclick="trackClick('affiliate-gshock', event)" class="block bg-white rounded-[20px] overflow-hidden shadow-link hover:scale-[1.02] transition-transform no-underline text-inherit">
+                        <div class="h-[110px] bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center relative">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#DDA835" stroke-width="1.5" class="opacity-70"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <span class="absolute top-2 left-2 text-[8px] font-bold text-white bg-black/60 rounded-full px-2 py-0.5 uppercase tracking-wider">Affiliate</span>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[11px] font-semibold text-gray-500 truncate">Casio G-Shock DW5600</p>
+                            <p class="text-[14px] font-bold text-black mt-0.5">$99</p>
+                            <span class="mt-1.5 text-[10px] font-semibold text-white bg-black rounded-full px-3 py-1 inline-block hover:bg-gray-800 transition-colors">Check Price →</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="affiliate-item flex-shrink-0 w-[150px] snap-start" data-name="Nike Air Max 270 shoes" data-price="185" data-category="fashion">
+                    <a href="https://nike.com/dp/example3?tag=comedycentral-20" target="_blank" rel="noopener noreferrer nofollow" onclick="trackClick('affiliate-nike', event)" class="block bg-white rounded-[20px] overflow-hidden shadow-link hover:scale-[1.02] transition-transform no-underline text-inherit">
+                        <div class="h-[110px] bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center relative">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="1.5" class="opacity-70"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                            <span class="absolute top-2 left-2 text-[8px] font-bold text-white bg-black/60 rounded-full px-2 py-0.5 uppercase tracking-wider">Affiliate</span>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[11px] font-semibold text-gray-500 truncate">Nike Air Max 270</p>
+                            <p class="text-[14px] font-bold text-black mt-0.5">$185 <span class="text-[10px] font-normal text-gray-400 line-through ml-1">$220</span></p>
+                            <span class="mt-1.5 text-[10px] font-semibold text-white bg-black rounded-full px-3 py-1 inline-block hover:bg-gray-800 transition-colors">Get Deal →</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="affiliate-item flex-shrink-0 w-[150px] snap-start" data-name="MacBook Pro 14 laptop apple" data-price="1999" data-category="tech">
+                    <a href="https://apple.com/dp/example4?tag=comedycentral-20" target="_blank" rel="noopener noreferrer nofollow" onclick="trackClick('affiliate-macbook', event)" class="block bg-white rounded-[20px] overflow-hidden shadow-link hover:scale-[1.02] transition-transform no-underline text-inherit">
+                        <div class="h-[110px] bg-gradient-to-br from-purple-50 to-violet-100 flex items-center justify-center relative">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#7960F1" stroke-width="1.5" class="opacity-70"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            <span class="absolute top-2 left-2 text-[8px] font-bold text-white bg-black/60 rounded-full px-2 py-0.5 uppercase tracking-wider">Affiliate</span>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[11px] font-semibold text-gray-500 truncate">MacBook Pro 14"</p>
+                            <p class="text-[14px] font-bold text-black mt-0.5">$1,999</p>
+                            <span class="mt-1.5 text-[10px] font-semibold text-white bg-black rounded-full px-3 py-1 inline-block hover:bg-gray-800 transition-colors">Best Price →</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="affiliate-item flex-shrink-0 w-[150px] snap-start" data-name="Kindle Paperwhite ebook reader amazon" data-price="139" data-category="tech">
+                    <a href="https://amazon.com/dp/example5?tag=comedycentral-20" target="_blank" rel="noopener noreferrer nofollow" onclick="trackClick('affiliate-kindle', event)" class="block bg-white rounded-[20px] overflow-hidden shadow-link hover:scale-[1.02] transition-transform no-underline text-inherit">
+                        <div class="h-[110px] bg-gradient-to-br from-rose-50 to-pink-100 flex items-center justify-center relative">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#FF4DF8" stroke-width="1.5" class="opacity-70"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                            <span class="absolute top-2 left-2 text-[8px] font-bold text-white bg-black/60 rounded-full px-2 py-0.5 uppercase tracking-wider">Affiliate</span>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[11px] font-semibold text-gray-500 truncate">Kindle Paperwhite</p>
+                            <p class="text-[14px] font-bold text-black mt-0.5">$139 <span class="text-[10px] font-normal text-gray-400 line-through ml-1">$169</span></p>
+                            <span class="mt-1.5 text-[10px] font-semibold text-white bg-black rounded-full px-3 py-1 inline-block hover:bg-gray-800 transition-colors">Get Deal →</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="affiliate-item flex-shrink-0 w-[150px] snap-start" data-name="AirPods Pro apple wireless earbuds" data-price="249" data-category="audio">
+                    <a href="https://amazon.com/dp/example6?tag=comedycentral-20" target="_blank" rel="noopener noreferrer nofollow" onclick="trackClick('affiliate-airpods', event)" class="block bg-white rounded-[20px] overflow-hidden shadow-link hover:scale-[1.02] transition-transform no-underline text-inherit">
+                        <div class="h-[110px] bg-gradient-to-br from-cyan-50 to-sky-100 flex items-center justify-center relative">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#4D9FFF" stroke-width="1.5" class="opacity-70"><path d="M22 10.5a6 6 0 0 0-12 0"/><path d="M4 15.5a6 6 0 0 0 12 0"/><path d="M10 10.5h.01"/><path d="M14 10.5h.01"/></svg>
+                            <span class="absolute top-2 left-2 text-[8px] font-bold text-white bg-black/60 rounded-full px-2 py-0.5 uppercase tracking-wider">Affiliate</span>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[11px] font-semibold text-gray-500 truncate">AirPods Pro 2</p>
+                            <p class="text-[14px] font-bold text-black mt-0.5">$249</p>
+                            <span class="mt-1.5 text-[10px] font-semibold text-white bg-black rounded-full px-3 py-1 inline-block hover:bg-gray-800 transition-colors">Check Price →</span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- No results message -->
+            <p id="noProductResult" class="hidden text-center text-[13px] text-gray-400 font-medium py-6">No products found. Try a different search.</p>
+
+            <!-- Affiliate Disclosure -->
+            <p class="text-[10px] text-gray-400 text-center mt-3 px-2 leading-relaxed">
+                <i class="ph ph-info not-italic"></i> 
+                As an Amazon Associate we earn from qualifying purchases. Prices may vary.
+            </p>
+        </div>
+
         <!-- Social Icons (Pixel-perfect matches) -->
-        <div class="flex items-center justify-center gap-6 mt-8 mb-20">
+        <div class="flex items-center justify-center gap-6 mt-4 mb-20">
             <!-- Facebook -->
             <a href="#" class="text-black hover:scale-110 transition-transform">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -244,7 +365,7 @@
         <div class="mt-auto w-full flex flex-col items-center pb-4 px-4">
             <!-- Large Action Button -->
             <button class="bg-white text-black font-bold text-[15px] py-4 px-8 rounded-full shadow-join hover:scale-105 transition-transform mb-8">
-                Join comedycentral on Linktree
+                Join comedycentral on Linkto
             </button>
 
             <!-- Bottom Tiny Links -->
@@ -259,11 +380,138 @@
                 <span>•</span>
                 <a href="#" class="hover:underline">About this account</a>
                 <span>•</span>
-                <a href="#" class="hover:underline">More from Linktree</a>
+                <a href="#" class="hover:underline">More from Linkto</a>
             </div>
         </div>
 
     </main>
+
+    <!-- Floating Share Button (Mobile) -->
+    <button id="shareFab" class="fixed bottom-6 right-6 w-14 h-14 bg-black text-white rounded-2xl shadow-float flex items-center justify-center hover:scale-105 active:scale-95 transition-transform md:hidden z-50" aria-label="Share">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+            <polyline points="16 6 12 2 8 6"></polyline>
+            <line x1="12" y1="2" x2="12" y2="15"></line>
+        </svg>
+    </button>
+
+    <script>
+        // ==========================================
+        // Share Profile — Web Share API
+        // ==========================================
+        const shareData = {
+            title: 'Comedy Central on Linkto',
+            text: 'Check out Comedy Central on Linkto!',
+            url: 'https://linkto.com/comedycentral'
+        };
+
+        async function shareProfile() {
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                    console.log('[SHARE] Shared successfully');
+                } catch (err) {
+                    if (err.name !== 'AbortError') {
+                        console.warn('[SHARE] Error:', err);
+                        fallbackCopyLink();
+                    }
+                }
+            } else {
+                fallbackCopyLink();
+            }
+        }
+
+        function fallbackCopyLink() {
+            const input = document.createElement('input');
+            input.value = shareData.url;
+            document.body.appendChild(input);
+            input.select();
+            try {
+                document.execCommand('copy');
+                showToast('Link copied to clipboard!');
+            } catch (e) {
+                prompt('Copy this link:', shareData.url);
+            }
+            document.body.removeChild(input);
+        }
+
+        function showToast(msg) {
+            const existing = document.querySelector('.toast-msg');
+            if (existing) existing.remove();
+            const toast = document.createElement('div');
+            toast.className = 'toast-msg fixed bottom-24 left-1/2 -translate-x-1/2 bg-black text-white text-sm font-medium px-5 py-3 rounded-full shadow-float z-50 animate-[fadeInUp_0.3s_ease]';
+            toast.textContent = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        // Attach share to both buttons
+        document.getElementById('shareBtn')?.addEventListener('click', shareProfile);
+        document.getElementById('shareFab')?.addEventListener('click', shareProfile);
+
+        // ==========================================
+        // Tracking (fire-and-forget)
+        // ==========================================
+        function trackPageView() {
+            const payload = {
+                username: 'comedycentral',
+                referrer: document.referrer || 'direct',
+                user_agent: navigator.userAgent,
+                device: /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : 'desktop'
+            };
+            console.log('[TRACK] Page View:', payload);
+        }
+
+        function trackClick(linkId, event) {
+            const payload = {
+                username: 'comedycentral',
+                link_id: linkId,
+                timestamp: new Date().toISOString(),
+                page_url: window.location.href
+            };
+            console.log('[TRACK] Link Click:', payload);
+            return true;
+        }
+
+        document.addEventListener('DOMContentLoaded', trackPageView);
+
+        // ==========================================
+        // Affiliate Product Search Filter
+        // ==========================================
+        const searchInput = document.getElementById('productSearch');
+        const productRow = document.getElementById('productRow');
+        const noResult = document.getElementById('noProductResult');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                const query = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                document.querySelectorAll('.affiliate-item').forEach(function (item) {
+                    const name = item.getAttribute('data-name').toLowerCase();
+                    const category = item.getAttribute('data-category').toLowerCase();
+                    const matches = !query || name.includes(query) || category.includes(query);
+                    item.style.display = matches ? '' : 'none';
+                    if (matches) visibleCount++;
+                });
+
+                if (noResult) {
+                    noResult.classList.toggle('hidden', visibleCount > 0);
+                }
+            });
+        }
+    </script>
+
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translate(-50%, 12px); }
+            to   { opacity: 1; transform: translate(-50%, 0); }
+        }
+    </style>
 
 </body>
 </html>
