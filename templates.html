@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkto — Templates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#FFD800',
+                            pink: '#FF4DF8',
+                            blue: '#4D9FFF',
+                            green: '#00E676',
+                            bg: '#F3F3F1'
+                        }
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px 0px rgba(0,0,0,1)',
+                        'brutal-sm': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'brutal-hover': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'brutal-lg': '12px 12px 0px 0px rgba(0,0,0,1)',
+                        'brutal-xl': '16px 16px 0px 0px rgba(0,0,0,1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Phone frame floating */
+        .float-phone {
+            animation: floatPhone 6s ease-in-out infinite;
+        }
+        @keyframes floatPhone {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Category filter active */
+        .filter-btn.active {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-black antialiased overflow-x-hidden selection:bg-brand-pink selection:text-white">
+
+    <!-- ========================================== -->
+    <!-- NAVIGATION                                 -->
+    <!-- ========================================== -->
+    <nav class="fixed top-0 w-full bg-brand-bg border-b-4 border-black z-50">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center -rotate-12 hover:rotate-0 transition-transform">
+                        <i class="ph ph-link text-brand-yellow text-2xl font-bold"></i>
+                    </div>
+                    <span class="font-black text-3xl tracking-tight">Linkto.</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden xl:flex items-center gap-8 font-bold text-lg">
+                    <a href="index.html#features" class="hover:text-brand-pink hover:underline decoration-4 underline-offset-4 transition-colors">Features</a>
+                    <a href="templates.html" class="text-brand-pink underline decoration-4 underline-offset-4 transition-colors">Templates</a>
+                    <a href="index.html#pricing" class="hover:text-brand-green hover:underline decoration-4 underline-offset-4 transition-colors">Pricing</a>
+                    <a href="index.html#reviews" class="hover:text-brand-pink hover:underline decoration-4 underline-offset-4 transition-colors">Reviews</a>
+                    <a href="index.html#faq" class="hover:text-brand-blue hover:underline decoration-4 underline-offset-4 transition-colors">FAQ</a>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hidden md:block font-bold text-lg hover:underline decoration-4 underline-offset-4 bg-white border-2 border-transparent px-4 py-2 hover:border-black rounded-lg transition-all">Log in</a>
+                    <a href="index.html#cta" class="bg-black text-white font-bold text-base md:text-lg px-6 py-3 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full flex items-center gap-2">
+                        Sign Up Free <i class="ph ph-arrow-right font-bold"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- HERO + FILTERS                             -->
+    <!-- ========================================== -->
+    <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto">
+            <div class="inline-block bg-black text-white px-4 py-1 rounded-full font-bold text-sm mb-6">🎨 TEMPLATES</div>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-black">
+                A Linkto template to suit<br>
+                <span class="bg-brand-yellow px-4 border-4 border-black shadow-brutal inline-block mt-4 -rotate-1 hover:rotate-1 transition-transform duration-300">every brand & creator.</span>
+            </h1>
+            <p class="text-xl sm:text-2xl font-semibold text-gray-700 mt-8 max-w-3xl mx-auto">
+                Different styles, layouts, and features to help you create a Linkto that looks and feels like you. Explore our library of custom templates and start connecting with your audience in minutes.
+            </p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="mt-12 flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+            <button class="filter-btn active px-5 py-3 font-bold text-sm border-4 border-black bg-black text-white shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">All Templates</button>
+            <button class="filter-btn px-5 py-3 font-bold text-sm border-4 border-black bg-white text-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Fashion</button>
+            <button class="filter-btn px-5 py-3 font-bold text-sm border-4 border-black bg-white text-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Health & Fitness</button>
+            <button class="filter-btn px-5 py-3 font-bold text-sm border-4 border-black bg-white text-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Influencer</button>
+            <button class="filter-btn px-5 py-3 font-bold text-sm border-4 border-black bg-white text-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Marketing</button>
+            <button class="filter-btn px-5 py-3 font-bold text-sm border-4 border-black bg-white text-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Music</button>
+            <button class="filter-btn px-5 py-3 font-bold text-sm border-4 border-black bg-white text-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Small Business</button>
+            <button class="filter-btn px-5 py-3 font-bold text-sm border-4 border-black bg-white text-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Social Media</button>
+            <button class="filter-btn px-5 py-3 font-bold text-sm border-4 border-black bg-white text-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Sports</button>
+            <button class="filter-btn px-5 py-3 font-bold text-sm border-4 border-black bg-white text-black shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">WhatsApp</button>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TEMPLATES GRID                             -->
+    <!-- ========================================== -->
+    <section class="pb-20 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            
+            <!-- Template Card — Neon Storm -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <!-- Phone Mockup -->
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-[#1a1a2e] rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <!-- Notch -->
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <!-- Screen Content -->
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-brand-pink border-2 border-white rounded-full"></div>
+                            <div class="w-20 h-2 bg-gray-600 rounded-full"></div>
+                            <div class="w-28 h-2 bg-gray-700 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-gradient-to-r from-brand-pink to-brand-blue rounded-lg"></div>
+                                <div class="h-8 bg-gradient-to-r from-brand-yellow to-brand-pink rounded-lg"></div>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <div class="aspect-square bg-gradient-to-br from-brand-blue to-brand-pink rounded-xl"></div>
+                                    <div class="aspect-square bg-gradient-to-br from-brand-green to-brand-yellow rounded-xl"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Neon Storm</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Influencer & Creator</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Midnight -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-[#0f0f0f] rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-white border-2 border-gray-600 rounded-full"></div>
+                            <div class="w-20 h-2 bg-gray-700 rounded-full"></div>
+                            <div class="w-28 h-2 bg-gray-800 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-white/10 border border-white/20 rounded-lg backdrop-blur"></div>
+                                <div class="h-8 bg-white/10 border border-white/20 rounded-lg backdrop-blur"></div>
+                                <div class="h-8 bg-white/10 border border-white/20 rounded-lg backdrop-blur"></div>
+                                <div class="h-8 bg-white/10 border border-white/20 rounded-lg backdrop-blur"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Midnight</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Small Business</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Sunset -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-gradient-to-b from-orange-400 to-pink-600 rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-white border-2 border-orange-300 rounded-full"></div>
+                            <div class="w-20 h-2 bg-white/50 rounded-full"></div>
+                            <div class="w-28 h-2 bg-white/30 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-white/80 rounded-lg"></div>
+                                <div class="h-8 bg-white/80 rounded-lg"></div>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <div class="aspect-square bg-white/60 rounded-xl"></div>
+                                    <div class="aspect-square bg-white/60 rounded-xl"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Sunset</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Fashion</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Mint -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-gradient-to-b from-teal-200 to-teal-400 rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-white border-2 border-teal-300 rounded-full"></div>
+                            <div class="w-20 h-2 bg-teal-600/50 rounded-full"></div>
+                            <div class="w-28 h-2 bg-teal-600/30 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-white/90 rounded-lg"></div>
+                                <div class="h-8 bg-white/90 rounded-lg"></div>
+                                <div class="h-8 bg-white/90 rounded-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Mint</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Health & Fitness</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Retro -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-brand-yellow rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-black rounded-full"></div>
+                            <div class="w-20 h-2 bg-black/50 rounded-full"></div>
+                            <div class="w-28 h-2 bg-black/30 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-black/90 rounded-lg"></div>
+                                <div class="h-8 bg-black/90 rounded-lg"></div>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <div class="aspect-square bg-brand-pink rounded-xl"></div>
+                                    <div class="aspect-square bg-brand-blue rounded-xl"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Retro</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Music</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Bloom -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-gradient-to-br from-pink-200 via-purple-200 to-indigo-300 rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-white border-2 border-purple-300 rounded-full"></div>
+                            <div class="w-20 h-2 bg-purple-400/50 rounded-full"></div>
+                            <div class="w-28 h-2 bg-purple-400/30 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-white/90 rounded-lg"></div>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <div class="aspect-square bg-white/80 rounded-xl"></div>
+                                    <div class="aspect-square bg-white/80 rounded-xl"></div>
+                                    <div class="aspect-square bg-white/80 rounded-xl"></div>
+                                    <div class="aspect-square bg-white/80 rounded-xl"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Bloom</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Social Media</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Noir -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-gradient-to-b from-gray-900 to-black rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-white/10 border border-white/30 rounded-full"></div>
+                            <div class="w-20 h-2 bg-gray-700 rounded-full"></div>
+                            <div class="w-28 h-2 bg-gray-800 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-white/5 border border-white/10 rounded-lg"></div>
+                                <div class="h-8 bg-white/5 border border-white/10 rounded-lg"></div>
+                                <div class="h-8 bg-white/5 border border-white/10 rounded-lg"></div>
+                                <div class="h-8 bg-white/5 border border-white/10 rounded-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Noir</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Marketing</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Ocean -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-gradient-to-b from-cyan-400 to-blue-600 rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-white border-2 border-cyan-300 rounded-full"></div>
+                            <div class="w-20 h-2 bg-white/50 rounded-full"></div>
+                            <div class="w-28 h-2 bg-white/30 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-white/80 rounded-lg"></div>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <div class="aspect-square bg-white/60 rounded-xl flex items-center justify-center text-blue-400 font-bold text-2xl">🎵</div>
+                                    <div class="aspect-square bg-white/60 rounded-xl flex items-center justify-center text-blue-400 font-bold text-2xl">🎶</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Ocean</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Music</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Sport -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-gradient-to-b from-green-500 to-emerald-800 rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-white border-2 border-green-300 rounded-full"></div>
+                            <div class="w-20 h-2 bg-white/50 rounded-full"></div>
+                            <div class="w-28 h-2 bg-white/30 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-white/80 rounded-lg"></div>
+                                <div class="h-8 bg-white/80 rounded-lg"></div>
+                                <div class="h-8 bg-white/80 rounded-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Sport</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Sports</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Candy -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-gradient-to-r from-pink-400 via-red-300 to-yellow-200 rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-white border-2 border-pink-300 rounded-full"></div>
+                            <div class="w-20 h-2 bg-white/50 rounded-full"></div>
+                            <div class="w-28 h-2 bg-white/30 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-white/80 rounded-lg"></div>
+                                <div class="h-8 bg-white/80 rounded-lg"></div>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <div class="aspect-square bg-white/70 rounded-xl"></div>
+                                    <div class="aspect-square bg-white/70 rounded-xl"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Candy</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Fashion</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Block -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-brand-bg rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-brand-yellow border-2 border-black rounded-full"></div>
+                            <div class="w-20 h-2 bg-black/50 rounded-full"></div>
+                            <div class="w-28 h-2 bg-black/30 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-8 bg-white border-2 border-black shadow-brutal-sm rounded-lg"></div>
+                                <div class="h-8 bg-brand-pink border-2 border-black shadow-brutal-sm rounded-lg"></div>
+                                <div class="h-8 bg-brand-blue border-2 border-black shadow-brutal-sm rounded-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Block</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Small Business</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template Card — Wave -->
+            <div class="group cursor-pointer">
+                <div class="relative bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden rounded-3xl">
+                    <div class="relative mx-auto mt-6 mb-4 w-[180px] h-[380px] bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 rounded-[2rem] border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <div class="w-20 h-5 bg-black rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        <div class="pt-10 px-3 flex flex-col items-center gap-2 relative z-10">
+                            <div class="w-12 h-12 bg-white border-2 border-purple-300 rounded-full"></div>
+                            <div class="w-20 h-2 bg-white/50 rounded-full"></div>
+                            <div class="w-28 h-2 bg-white/30 rounded-full"></div>
+                            <div class="w-full mt-4 space-y-2">
+                                <div class="h-12 bg-white/80 rounded-lg"></div>
+                                <div class="h-8 bg-white/80 rounded-lg"></div>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <div class="aspect-square bg-white/70 rounded-xl"></div>
+                                    <div class="aspect-square bg-white/70 rounded-xl"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-black text-lg">Wave</h3>
+                        <p class="font-semibold text-sm text-gray-500 mt-1">Influencer</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- View All Button -->
+        <div class="text-center mt-16">
+            <div class="inline-block bg-black text-white px-6 py-3 rounded-full font-bold text-sm border-4 border-black shadow-brutal-sm mb-4">📱 50+ templates available</div>
+            <p class="text-lg font-semibold text-gray-500">And more added every month. All templates are fully customizable.</p>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- GET INSPIRED — BRANDS & CREATORS           -->
+    <!-- ========================================== -->
+    <section class="bg-brand-blue border-y-4 border-black py-24 relative overflow-hidden">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-black rounded-full -z-0 opacity-20"></div>
+        <div class="absolute bottom-10 right-10 w-48 h-48 bg-brand-yellow border-4 border-black -z-0 rotate-12"></div>
+
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-white text-black px-4 py-1 rounded-full font-bold text-sm mb-6">✨ GET INSPIRED</div>
+                <h2 class="text-4xl md:text-6xl font-black text-black inline-block bg-white border-4 border-black px-6 py-3 shadow-brutal rotate-1 hover:rotate-0 transition-transform">
+                    Used by top brands & creators
+                </h2>
+                <p class="text-xl font-bold text-black/70 mt-6 max-w-2xl mx-auto">Join millions of creators, from global brands to rising stars, using Linkto to power their online presence.</p>
+            </div>
+
+            <!-- Brand Cards Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- Brand — Selena Gomez -->
+                <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-4 border-black shadow-brutal-sm overflow-hidden mb-4 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center">
+                        <span class="text-white font-black text-2xl">SG</span>
+                    </div>
+                    <h3 class="font-black text-lg">Selena Gomez</h3>
+                    <p class="font-semibold text-sm text-gray-500 mb-4">429M followers</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-sm font-bold text-brand-blue hover:underline">View Profile <i class="ph ph-arrow-square-out"></i></a>
+                </div>
+
+                <!-- Brand — Tony Hawk -->
+                <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-4 border-black shadow-brutal-sm overflow-hidden mb-4 bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
+                        <span class="text-white font-black text-2xl">TH</span>
+                    </div>
+                    <h3 class="font-black text-lg">Tony Hawk</h3>
+                    <p class="font-semibold text-sm text-gray-500 mb-4">Skateboarding Legend</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-sm font-bold text-brand-blue hover:underline">View Profile <i class="ph ph-arrow-square-out"></i></a>
+                </div>
+
+                <!-- Brand — HBO -->
+                <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-4 border-black shadow-brutal-sm overflow-hidden mb-4 bg-black flex items-center justify-center">
+                        <span class="text-white font-black text-xl">HBO</span>
+                    </div>
+                    <h3 class="font-black text-lg">HBO</h3>
+                    <p class="font-semibold text-sm text-gray-500 mb-4">Entertainment</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-sm font-bold text-brand-blue hover:underline">View Profile <i class="ph ph-arrow-square-out"></i></a>
+                </div>
+
+                <!-- Brand — LA Clippers -->
+                <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-4 border-black shadow-brutal-sm overflow-hidden mb-4 bg-gradient-to-br from-blue-600 to-red-600 flex items-center justify-center">
+                        <span class="text-white font-black text-lg">LAC</span>
+                    </div>
+                    <h3 class="font-black text-lg">LA Clippers</h3>
+                    <p class="font-semibold text-sm text-gray-500 mb-4">NBA Team</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-sm font-bold text-brand-blue hover:underline">View Profile <i class="ph ph-arrow-square-out"></i></a>
+                </div>
+
+                <!-- Brand — Comedy Central -->
+                <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-4 border-black shadow-brutal-sm overflow-hidden mb-4 bg-yellow-400 flex items-center justify-center">
+                        <span class="text-black font-black text-lg">CC</span>
+                    </div>
+                    <h3 class="font-black text-lg">Comedy Central</h3>
+                    <p class="font-semibold text-sm text-gray-500 mb-4">Entertainment</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-sm font-bold text-brand-blue hover:underline">View Profile <i class="ph ph-arrow-square-out"></i></a>
+                </div>
+
+                <!-- Brand — Pharrell -->
+                <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-4 border-black shadow-brutal-sm overflow-hidden mb-4 bg-gradient-to-br from-yellow-300 to-green-400 flex items-center justify-center">
+                        <span class="text-black font-black text-2xl">P</span>
+                    </div>
+                    <h3 class="font-black text-lg">Pharrell</h3>
+                    <p class="font-semibold text-sm text-gray-500 mb-4">Musician & Producer</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-sm font-bold text-brand-blue hover:underline">View Profile <i class="ph ph-arrow-square-out"></i></a>
+                </div>
+
+                <!-- Brand — Funky Nutmeg -->
+                <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-6 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-full border-4 border-black shadow-brutal-sm overflow-hidden mb-4 bg-gradient-to-br from-orange-300 to-brown-500 flex items-center justify-center">
+                        <span class="text-white font-black text-lg">FN</span>
+                    </div>
+                    <h3 class="font-black text-lg">Funky Nutmeg</h3>
+                    <p class="font-semibold text-sm text-gray-500 mb-4">Food & Lifestyle</p>
+                    <a href="#" class="inline-flex items-center gap-1 text-sm font-bold text-brand-blue hover:underline">View Profile <i class="ph ph-arrow-square-out"></i></a>
+                </div>
+
+                <!-- Brand — Your Brand -->
+                <div class="bg-white border-4 border-dashed border-black p-6 text-center group hover:shadow-brutal-lg hover:-translate-y-2 transition-all flex flex-col items-center justify-center">
+                    <div class="w-20 h-20 mx-auto rounded-full border-4 border-dashed border-black mb-4 flex items-center justify-center bg-brand-bg">
+                        <i class="ph ph-plus text-4xl font-bold text-gray-400"></i>
+                    </div>
+                    <h3 class="font-black text-lg text-gray-400">Your Brand Here</h3>
+                    <p class="font-semibold text-sm text-gray-400 mb-4">Join the community</p>
+                    <a href="index.html#cta" class="inline-flex items-center gap-1 text-sm font-bold text-brand-pink hover:underline">Get Started <i class="ph ph-arrow-right"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- CTA SECTION                                -->
+    <!-- ========================================== -->
+    <section class="bg-brand-yellow border-b-4 border-black py-24 relative overflow-hidden">
+        <div class="absolute top-10 right-10 w-40 h-40 bg-black rounded-full -z-0 float-slow" style="animation: floatSlow 6s ease-in-out infinite;"></div>
+        <div class="absolute bottom-10 left-10 w-32 h-32 bg-white border-4 border-black -z-0 rotate-12"></div>
+
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-block bg-black text-white px-4 py-1 rounded-full font-bold text-sm mb-6">🚀 GET STARTED TODAY</div>
+            <h2 class="text-5xl md:text-7xl font-black text-black leading-[1.1] max-w-4xl mx-auto">
+                Jumpstart your<br>
+                <span class="bg-white px-4 border-4 border-black shadow-brutal inline-block mt-4 -rotate-1">corner of the internet.</span>
+            </h2>
+            <p class="text-xl md:text-2xl font-bold text-black/70 mt-8 max-w-2xl mx-auto">Choose a template, make it yours, and start sharing everything you are — in one link. It's free to start.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+                <div class="relative flex-grow max-w-sm mx-auto sm:mx-0">
+                    <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-lg font-bold text-gray-400">linkto.com/</span>
+                    <input type="text" placeholder="yourname" class="w-full text-lg font-bold bg-white border-4 border-black shadow-brutal rounded-none py-4 pl-[130px] pr-4 focus:outline-none focus:ring-0 focus:translate-x-[4px] focus:translate-y-[4px] focus:shadow-brutal-hover transition-all">
+                </div>
+                <button class="bg-black text-white font-black text-xl px-10 py-4 border-4 border-black shadow-brutal hover:shadow-brutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all whitespace-nowrap">
+                    Create Your Linkto
+                </button>
+            </div>
+            <p class="text-sm font-bold text-black/50 mt-4">No credit card required • Free forever plan • 60 seconds setup</p>
+        </div>
+
+        <style>
+            @keyframes floatSlow {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+            }
+        </style>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer class="bg-black pt-20 pb-10 text-white">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
+                <div class="col-span-2 md:col-span-2">
+                    <a href="index.html" class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-brand-yellow border-2 border-brand-yellow rounded-full flex items-center justify-center text-black">
+                            <i class="ph ph-link text-2xl font-bold"></i>
+                        </div>
+                        <span class="font-black text-4xl">Linkto.</span>
+                    </a>
+                    <p class="font-semibold text-gray-400 text-lg max-w-sm">The only bio link you'll ever need. Designed for creators, built for conversion.</p>
+                    <div class="flex gap-3 mt-6">
+                        <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-brand-blue hover:text-black transition-colors"><i class="ph ph-twitter-logo text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-brand-pink hover:text-black transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-white hover:text-black transition-colors"><i class="ph ph-tiktok-logo text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-brand-yellow hover:text-black transition-colors"><i class="ph ph-youtube-logo text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-black text-xl mb-6 text-brand-pink">Product</h4>
+                    <ul class="space-y-4 font-semibold text-gray-300">
+                        <li><a href="index.html#features" class="hover:text-white transition-colors">Features</a></li>
+                        <li><a href="index.html#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="templates.html" class="hover:text-white transition-colors">Templates</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Affiliate Hub</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Custom Domain</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-black text-xl mb-6 text-brand-blue">Resources</h4>
+                    <ul class="space-y-4 font-semibold text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">API Docs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-black text-xl mb-6 text-brand-green">Company</h4>
+                    <ul class="space-y-4 font-semibold text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t-4 border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="font-bold text-gray-500">© 2026 Linkto Inc. All rights reserved.</p>
+                <div class="flex gap-6 text-sm font-bold text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Category filter buttons
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.classList.remove('bg-black', 'text-white');
+                    b.classList.add('bg-white', 'text-black');
+                });
+                this.classList.add('active');
+                this.classList.remove('bg-white', 'text-black');
+                this.classList.add('bg-black', 'text-white');
+            });
+        });
+    </script>
+</body>
+</html>
