@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkto - Everything you are. In one link.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#FFD800',
+                            pink: '#FF4DF8',
+                            blue: '#4D9FFF',
+                            green: '#00E676',
+                            bg: '#F3F3F1'
+                        }
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px 0px rgba(0,0,0,1)',
+                        'brutal-sm': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'brutal-hover': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'brutal-lg': '12px 12px 0px 0px rgba(0,0,0,1)',
+                        'brutal-xl': '16px 16px 0px 0px rgba(0,0,0,1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Marquee Animation */
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Stars rating animation */
+        .star-pulse {
+            animation: starPulse 1.5s ease-in-out infinite;
+        }
+        @keyframes starPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* Floating decoration */
+        .float-slow {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        /* Staggered fade-in for review cards */
+        .review-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-black antialiased overflow-x-hidden selection:bg-brand-pink selection:text-white">
+
+    <!-- ========================================== -->
+    <!-- LANDING PAGE (NEO BRUTALISM)               -->
+    <!-- ========================================== -->
+    <div id="landing-page" class="block transition-opacity duration-300">
+
+        <!-- ===== NAVIGATION ===== -->
+        <nav class="fixed top-0 w-full bg-brand-bg border-b-4 border-black z-50">
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-20 items-center">
+                    <!-- Logo -->
+                    <a href="#" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                        <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center -rotate-12 hover:rotate-0 transition-transform">
+                            <i class="ph ph-link text-brand-yellow text-2xl font-bold"></i>
+                        </div>
+                        <span class="font-black text-3xl tracking-tight">Linkto.</span>
+                    </a>
+                    
+                    <!-- Desktop Menu -->
+                    <div class="hidden xl:flex items-center gap-8 font-bold text-lg">
+                        <a href="#features" class="hover:text-brand-pink hover:underline decoration-4 underline-offset-4 transition-colors">Features</a>
+                        <a href="#templates" class="hover:text-brand-blue hover:underline decoration-4 underline-offset-4 transition-colors">Templates</a>
+                        <a href="#pricing" class="hover:text-brand-green hover:underline decoration-4 underline-offset-4 transition-colors">Pricing</a>
+                        <a href="#reviews" class="hover:text-brand-pink hover:underline decoration-4 underline-offset-4 transition-colors">Reviews</a>
+                        <a href="#faq" class="hover:text-brand-blue hover:underline decoration-4 underline-offset-4 transition-colors">FAQ</a>
+                    </div>
+
+                    <!-- Right Actions -->
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="hidden md:block font-bold text-lg hover:underline decoration-4 underline-offset-4 bg-white border-2 border-transparent px-4 py-2 hover:border-black rounded-lg transition-all">Log in</a>
+                        <a href="#cta" class="bg-black text-white font-bold text-base md:text-lg px-6 py-3 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full flex items-center gap-2">
+                            Sign Up Free <i class="ph ph-arrow-right font-bold"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ===== HERO SECTION ===== -->
+        <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-8 min-h-[75vh]">
+                <!-- Left Content -->
+                <div class="flex-1 text-center lg:text-left space-y-8 lg:pr-12">
+                    <div class="inline-block bg-white border-4 border-black px-5 py-2 rounded-full font-bold text-sm shadow-brutal-sm mb-4 -rotate-2 hover:rotate-0 transition-transform">
+                        <span class="flex items-center gap-2">✨ <span class="bg-brand-pink text-white px-2 py-0.5 rounded-full text-[10px] font-black mr-1">NEW</span> V2.0 is now live for Affiliators</span>
+                    </div>
+                    <h1 class="text-6xl sm:text-7xl lg:text-[5.5rem] font-black leading-[1.05] tracking-tight text-black">
+                        Everything you are. <br>
+                        <span class="bg-brand-yellow px-4 border-4 border-black shadow-brutal inline-block mt-4 -rotate-2 transform hover:rotate-2 transition-transform duration-300">In one link.</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl font-semibold text-gray-800 max-w-2xl mx-auto lg:mx-0">
+                        Join <strong class="text-brand-pink">10+ million</strong> creators, affiliates, and brands building their online hub. Fast, customizable, and ruthlessly optimized for conversions.
+                    </p>
+                    
+                    <!-- Stats Bar -->
+                    <div class="flex flex-wrap gap-6 sm:gap-10 justify-center lg:justify-start pt-4">
+                        <div class="text-center">
+                            <p class="text-3xl font-black">10M+</p>
+                            <p class="text-sm font-bold text-gray-500">Creators</p>
+                        </div>
+                        <div class="w-px h-12 bg-black/20 self-center"></div>
+                        <div class="text-center">
+                            <p class="text-3xl font-black">500M+</p>
+                            <p class="text-sm font-bold text-gray-500">Monthly Views</p>
+                        </div>
+                        <div class="w-px h-12 bg-black/20 self-center"></div>
+                        <div class="text-center">
+                            <p class="text-3xl font-black">4.9★</p>
+                            <p class="text-sm font-bold text-gray-500">Avg. Rating</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Brutalist Form/Input -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6">
+                        <div class="relative flex-grow max-w-sm">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-xl font-bold text-gray-400">linkto.com/</span>
+                            <input type="text" placeholder="yourname" class="w-full text-xl font-bold bg-white border-4 border-black shadow-brutal rounded-none py-5 pl-[135px] pr-4 focus:outline-none focus:ring-0 focus:translate-x-[4px] focus:translate-y-[4px] focus:shadow-brutal-hover transition-all">
+                        </div>
+                        <button class="bg-brand-pink text-black font-black text-xl px-10 py-5 border-4 border-black shadow-brutal hover:shadow-brutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all whitespace-nowrap">
+                            Claim Your Linkto
+                        </button>
+                    </div>
+
+                    <!-- Trusted By -->
+                    <div class="pt-8">
+                        <p class="text-sm font-bold text-gray-400 mb-4 tracking-widest uppercase">Trusted by teams at</p>
+                        <div class="flex flex-wrap gap-8 items-center opacity-60">
+                            <span class="font-black text-2xl text-gray-500">Spotify</span>
+                            <span class="font-black text-2xl text-gray-500">Nike</span>
+                            <span class="font-black text-2xl text-gray-500">BBC</span>
+                            <span class="font-black text-2xl text-gray-500">TikTok</span>
+                            <span class="font-black text-2xl text-gray-500">Disney</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual (Neo Brutalism Abstract Mockup) -->
+                <div class="flex-1 relative w-full max-w-md lg:max-w-none flex justify-center lg:justify-end">
+                    <div class="relative w-80 h-[580px] bg-[#E8E8E8] border-[6px] border-black rounded-[3rem] shadow-brutal-xl p-5 flex flex-col gap-4 overflow-hidden z-10 float-slow">
+                        <!-- Phone Notch -->
+                        <div class="w-32 h-6 bg-black rounded-b-2xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                        
+                        <!-- Mock Content Inside Phone -->
+                        <div class="mt-8 flex flex-col items-center gap-3 relative z-10">
+                            <div class="w-28 h-28 bg-brand-blue border-4 border-black rounded-full shadow-brutal-sm overflow-hidden">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Agung" alt="Avatar" class="w-full h-full object-cover bg-white">
+                            </div>
+                            <h3 class="font-black text-2xl">@agung_dev</h3>
+                            <p class="font-bold text-sm text-center bg-white border-2 border-black px-3 py-1 rounded-full shadow-brutal-sm">Tech & Setup Reviewer</p>
+                            <!-- Social Icons Row -->
+                            <div class="flex gap-2 mt-1">
+                                <div class="w-7 h-7 bg-white border-2 border-black rounded-full flex items-center justify-center text-xs font-bold">IG</div>
+                                <div class="w-7 h-7 bg-white border-2 border-black rounded-full flex items-center justify-center text-xs font-bold">TT</div>
+                                <div class="w-7 h-7 bg-white border-2 border-black rounded-full flex items-center justify-center text-xs font-bold">YT</div>
+                            </div>
+                        </div>
+
+                        <!-- Mock Links & Products -->
+                        <div class="flex-1 flex flex-col gap-3 mt-4 relative z-10 w-full overflow-y-auto no-scrollbar pb-6">
+                            <div class="w-full bg-white border-4 border-black shadow-brutal-sm p-3 font-bold text-center hover:-translate-y-1 transition-transform cursor-pointer flex items-center justify-center gap-2">
+                                <i class="ph ph-play-circle text-brand-pink text-lg"></i> My Setup Tour (YouTube)
+                            </div>
+                            
+                            <div class="w-full bg-brand-green border-4 border-black shadow-brutal-sm p-3 font-bold text-center hover:-translate-y-1 transition-transform cursor-pointer flex items-center justify-center gap-2">
+                                <i class="ph ph-shopping-bag text-lg"></i> Shop My Gear
+                            </div>
+
+                            <!-- Mock Product Affiliate Grid -->
+                            <div class="grid grid-cols-2 gap-3 mt-2">
+                                <div class="bg-brand-yellow border-4 border-black shadow-brutal-sm flex flex-col aspect-square overflow-hidden hover:-translate-y-1 transition-transform cursor-pointer">
+                                    <div class="h-1/2 bg-white border-b-4 border-black flex items-center justify-center p-2">
+                                        <div class="w-full h-full bg-gray-200 rounded-sm flex items-center justify-center font-bold text-gray-400">📷</div>
+                                    </div>
+                                    <div class="p-2 flex-1 flex items-center justify-center text-center font-bold text-[10px] leading-tight">Mechanical Keyboard</div>
+                                </div>
+                                <div class="bg-brand-pink border-4 border-black shadow-brutal-sm flex flex-col aspect-square overflow-hidden hover:-translate-y-1 transition-transform cursor-pointer">
+                                    <div class="h-1/2 bg-white border-b-4 border-black flex items-center justify-center p-2">
+                                        <div class="w-full h-full bg-gray-200 rounded-sm flex items-center justify-center font-bold text-gray-400">🎧</div>
+                                    </div>
+                                    <div class="p-2 flex-1 flex items-center justify-center text-center font-bold text-[10px] leading-tight">Monitor Lightbar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-10 -right-4 lg:right-10 w-24 h-24 bg-brand-yellow border-4 border-black rounded-full shadow-brutal z-20 flex items-center justify-center -rotate-12">
+                        <span class="font-black text-2xl">#1</span>
+                    </div>
+                    <div class="absolute -bottom-6 -left-4 lg:left-6 w-32 h-32 bg-brand-green border-4 border-black shadow-brutal rotate-12 -z-0 flex items-center justify-center">
+                        <i class="ph ph-lightning text-5xl font-bold"></i>
+                    </div>
+                    <div class="absolute bottom-20 -right-8 w-16 h-16 bg-brand-pink border-4 border-black shadow-brutal-sm rounded-full -z-0"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ===== MARQUEE / SOCIAL PROOF BANNER ===== -->
+        <section class="border-y-4 border-black bg-black py-8 overflow-hidden">
+            <div class="flex whitespace-nowrap animate-marquee">
+                <div class="flex items-center gap-16 mx-8">
+                    <span class="text-white font-black text-2xl flex items-center gap-3"><i class="ph ph-lightning text-brand-yellow"></i> 10M+ Creators Worldwide</span>
+                    <span class="text-white font-black text-2xl flex items-center gap-3"><i class="ph ph-globe text-brand-blue"></i> 195+ Countries</span>
+                    <span class="text-white font-black text-2xl flex items-center gap-3"><i class="ph ph-link text-brand-green"></i> 500M+ Links Shared</span>
+                    <span class="text-white font-black text-2xl flex items-center gap-3"><i class="ph ph-currency-dollar text-brand-pink"></i> $50M+ Affiliates Earned</span>
+                </div>
+                <div class="flex items-center gap-16 mx-8">
+                    <span class="text-white font-black text-2xl flex items-center gap-3"><i class="ph ph-lightning text-brand-yellow"></i> 10M+ Creators Worldwide</span>
+                    <span class="text-white font-black text-2xl flex items-center gap-3"><i class="ph ph-globe text-brand-blue"></i> 195+ Countries</span>
+                    <span class="text-white font-black text-2xl flex items-center gap-3"><i class="ph ph-link text-brand-green"></i> 500M+ Links Shared</span>
+                    <span class="text-white font-black text-2xl flex items-center gap-3"><i class="ph ph-currency-dollar text-brand-pink"></i> $50M+ Affiliates Earned</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES SECTION ===== -->
+        <section id="features" class="bg-brand-bg border-b-4 border-black py-24 relative overflow-hidden">
+            <!-- Background decoration -->
+            <div class="absolute top-20 right-20 w-64 h-64 bg-brand-yellow/20 border-4 border-black rounded-full -z-0"></div>
+            <div class="absolute bottom-20 left-20 w-48 h-48 bg-brand-blue/20 border-4 border-black -z-0 rotate-12"></div>
+
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-20">
+                    <div class="inline-block bg-black text-white px-4 py-1 rounded-full font-bold text-sm mb-6">🔥 POWERFUL FEATURES</div>
+                    <h2 class="text-4xl md:text-6xl font-black text-black inline-block bg-white border-4 border-black px-6 py-3 shadow-brutal -rotate-1 hover:rotate-0 transition-transform">
+                        More Than Just Links
+                    </h2>
+                    <p class="text-xl font-semibold text-gray-600 mt-6 max-w-2xl mx-auto">Everything you need to grow your audience and monetize your presence — all from one link.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all group">
+                        <div class="w-16 h-16 bg-brand-pink border-4 border-black rounded-full flex items-center justify-center mb-6 shadow-brutal-sm -rotate-6 group-hover:rotate-0 transition-transform">
+                            <i class="ph ph-shopping-bag text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Affiliate Hub Built-In</h3>
+                        <p class="font-semibold text-gray-700 text-lg leading-relaxed">Don't just share links. Build a visual storefront. Add products directly from marketplaces with our smart auto-scraper.</p>
+                        <a href="#" class="mt-6 inline-flex items-center gap-2 font-bold text-black hover:text-brand-pink transition-colors">Learn more <i class="ph ph-arrow-right"></i></a>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all group">
+                        <div class="w-16 h-16 bg-brand-yellow border-4 border-black flex items-center justify-center mb-6 shadow-brutal-sm rotate-3 group-hover:rotate-0 transition-transform">
+                            <i class="ph ph-chart-line-up text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Deep Analytics</h3>
+                        <p class="font-semibold text-gray-700 text-lg leading-relaxed">Track what converts. See real-time clicks, views, and revenue. Integrate Meta & TikTok Pixels for advanced retargeting.</p>
+                        <a href="#" class="mt-6 inline-flex items-center gap-2 font-bold text-black hover:text-brand-blue transition-colors">Learn more <i class="ph ph-arrow-right"></i></a>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all group">
+                        <div class="w-16 h-16 bg-brand-green border-4 border-black rounded-lg flex items-center justify-center mb-6 shadow-brutal-sm -rotate-3 group-hover:rotate-0 transition-transform">
+                            <i class="ph ph-paint-roller text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Radical Customization</h3>
+                        <p class="font-semibold text-gray-700 text-lg leading-relaxed">Your brand, your rules. Custom domains, dynamic themes, custom fonts, and Neo-Brutalist components available.</p>
+                        <a href="#" class="mt-6 inline-flex items-center gap-2 font-bold text-black hover:text-brand-green transition-colors">Learn more <i class="ph ph-arrow-right"></i></a>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all group">
+                        <div class="w-16 h-16 bg-brand-blue border-4 border-black rounded-full flex items-center justify-center mb-6 shadow-brutal-sm rotate-6 group-hover:rotate-0 transition-transform">
+                            <i class="ph ph-link-simple text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Smart Link Scheduling</h3>
+                        <p class="font-semibold text-gray-700 text-lg leading-relaxed">Schedule links to publish and unpublish automatically. Perfect for product launches, promotions, and time-sensitive campaigns.</p>
+                        <a href="#" class="mt-6 inline-flex items-center gap-2 font-bold text-black hover:text-brand-blue transition-colors">Learn more <i class="ph ph-arrow-right"></i></a>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all group">
+                        <div class="w-16 h-16 bg-brand-pink border-4 border-black rounded-lg flex items-center justify-center mb-6 shadow-brutal-sm rotate-3 group-hover:rotate-0 transition-transform">
+                            <i class="ph ph-currency-dollar text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Monetization Tools</h3>
+                        <p class="font-semibold text-gray-700 text-lg leading-relaxed">Accept tips, sell products, and grow memberships directly from your Linkto page. No middleman, no hidden fees.</p>
+                        <a href="#" class="mt-6 inline-flex items-center gap-2 font-bold text-black hover:text-brand-pink transition-colors">Learn more <i class="ph ph-arrow-right"></i></a>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all group">
+                        <div class="w-16 h-16 bg-brand-yellow border-4 border-black rounded-full flex items-center justify-center mb-6 shadow-brutal-sm -rotate-6 group-hover:rotate-0 transition-transform">
+                            <i class="ph ph-plugs text-3xl font-bold"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Integrations Ecosystem</h3>
+                        <p class="font-semibold text-gray-700 text-lg leading-relaxed">Connect Shopify, Stripe, PayPal, Spotify, Instagram, TikTok, YouTube & 50+ more platforms seamlessly.</p>
+                        <a href="#" class="mt-6 inline-flex items-center gap-2 font-bold text-black hover:text-brand-yellow transition-colors">Learn more <i class="ph ph-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TEMPLATES SECTION ===== -->
+        <section id="templates" class="bg-brand-bg border-b-4 border-black py-24">
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <div class="inline-block bg-brand-pink text-white px-4 py-1 rounded-full font-bold text-sm mb-6">🎨 PRE-MADE DESIGNS</div>
+                    <h2 class="text-4xl md:text-6xl font-black text-black inline-block bg-white border-4 border-black px-6 py-3 shadow-brutal rotate-1 hover:rotate-0 transition-transform">
+                        Stunning Templates
+                    </h2>
+                    <p class="text-xl font-semibold text-gray-600 mt-6 max-w-2xl mx-auto">Start with a professional design and make it your own. No coding required.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Template 1 -->
+                    <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden group">
+                        <div class="h-48 bg-gradient-to-br from-brand-yellow to-brand-pink border-b-4 border-black flex items-center justify-center relative overflow-hidden">
+                            <div class="w-20 h-20 bg-white border-4 border-black rounded-full shadow-brutal-sm flex items-center justify-center z-10">
+                                <i class="ph ph-storefront text-3xl font-bold"></i>
+                            </div>
+                            <div class="absolute -top-6 -right-6 w-24 h-24 bg-black rotate-12"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-black text-xl">Storefront</h3>
+                                <span class="bg-brand-green text-black text-xs font-bold px-2 py-1 rounded-full">Popular</span>
+                            </div>
+                            <p class="font-semibold text-gray-600">Perfect for affiliates and e-commerce. Showcase products with a visual grid layout.</p>
+                        </div>
+                    </div>
+
+                    <!-- Template 2 -->
+                    <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden group">
+                        <div class="h-48 bg-gradient-to-br from-brand-blue to-brand-green border-b-4 border-black flex items-center justify-center relative overflow-hidden">
+                            <div class="w-20 h-20 bg-white border-4 border-black rounded-full shadow-brutal-sm flex items-center justify-center z-10">
+                                <i class="ph ph-user-circle text-3xl font-bold"></i>
+                            </div>
+                            <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-black -rotate-12"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-black text-xl">Minimalist</h3>
+                                <span class="bg-brand-yellow text-black text-xs font-bold px-2 py-1 rounded-full">Clean</span>
+                            </div>
+                            <p class="font-semibold text-gray-600">Clean and minimal design for creators who want their content to speak first.</p>
+                        </div>
+                    </div>
+
+                    <!-- Template 3 -->
+                    <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden group">
+                        <div class="h-48 bg-gradient-to-br from-brand-pink to-brand-blue border-b-4 border-black flex items-center justify-center relative overflow-hidden">
+                            <div class="w-20 h-20 bg-white border-4 border-black rounded-full shadow-brutal-sm flex items-center justify-center z-10">
+                                <i class="ph ph-megaphone text-3xl font-bold"></i>
+                            </div>
+                            <div class="absolute top-6 -right-8 w-16 h-16 bg-black rounded-full"></div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-black text-xl">Ultimate</h3>
+                                <span class="bg-brand-pink text-white text-xs font-bold px-2 py-1 rounded-full">Pro</span>
+                            </div>
+                            <p class="font-semibold text-gray-600">Full-featured layout with video, products, social feeds, and advanced blocks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="#" class="inline-flex items-center gap-2 bg-black text-white font-black text-lg px-8 py-4 border-4 border-black shadow-brutal hover:shadow-brutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all">
+                        Browse All Templates <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PRICING SECTION ===== -->
+        <section id="pricing" class="bg-brand-bg border-b-4 border-black py-24 relative overflow-hidden">
+            <div class="absolute top-1/2 left-0 w-full h-2 bg-black -translate-y-1/2 -z-0"></div>
+            
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <div class="inline-block bg-black text-white px-4 py-1 rounded-full font-bold text-sm mb-6">💎 PRICING</div>
+                    <h2 class="text-4xl md:text-6xl font-black text-black inline-block bg-white border-4 border-black px-6 py-3 shadow-brutal -rotate-2 hover:rotate-0 transition-transform">
+                        Choose Your Plan
+                    </h2>
+                    <p class="text-xl font-semibold text-gray-600 mt-6 max-w-2xl mx-auto">Start free. Upgrade when you grow. No hidden fees, no surprises.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Free Plan -->
+                    <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-8 relative">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-black mb-2">Free</h3>
+                            <p class="text-5xl font-black mb-2">$0</p>
+                            <p class="text-sm font-bold text-gray-500 mb-6">Forever free</p>
+                            <ul class="text-left space-y-4 mb-8">
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Unlimited links
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Basic analytics
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    1 theme
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Linkto branding
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold text-gray-400">
+                                    <i class="ph ph-x-circle text-xl flex-shrink-0 mt-0.5"></i>
+                                    Custom domain
+                                </li>
+                            </ul>
+                            <a href="#" class="block w-full bg-black text-white font-bold text-lg py-4 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-center">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Starter Plan -->
+                    <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-8 relative">
+                        <div class="absolute -top-3 -right-3 bg-brand-yellow border-3 border-black px-3 py-1 font-black text-sm shadow-brutal-sm">POPULAR</div>
+                        <div class="text-center">
+                            <h3 class="text-2xl font-black mb-2">Starter</h3>
+                            <p class="text-5xl font-black mb-2">$5</p>
+                            <p class="text-sm font-bold text-gray-500 mb-6">Per month</p>
+                            <ul class="text-left space-y-4 mb-8">
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Everything in Free
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Advanced analytics
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    10 themes
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Link scheduling
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Remove Linkto branding
+                                </li>
+                            </ul>
+                            <a href="#" class="block w-full bg-brand-pink text-black font-bold text-lg py-4 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-center">
+                                Start Free Trial
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Pro Plan -->
+                    <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-8 relative">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-black mb-2">Pro</h3>
+                            <p class="text-5xl font-black mb-2">$12</p>
+                            <p class="text-sm font-bold text-gray-500 mb-6">Per month</p>
+                            <ul class="text-left space-y-4 mb-8">
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Everything in Starter
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Custom domain
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Priority support
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Monetization tools
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    SEO controls
+                                </li>
+                            </ul>
+                            <a href="#" class="block w-full bg-brand-yellow text-black font-bold text-lg py-4 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-center">
+                                Start Free Trial
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all p-8 relative">
+                        <div class="absolute -top-3 -right-3 bg-black text-white px-3 py-1 font-black text-sm shadow-brutal-sm">BEST VALUE</div>
+                        <div class="text-center">
+                            <h3 class="text-2xl font-black mb-2">Premium</h3>
+                            <p class="text-5xl font-black mb-2">$24</p>
+                            <p class="text-sm font-bold text-gray-500 mb-6">Per month</p>
+                            <ul class="text-left space-y-4 mb-8">
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Everything in Pro
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Unlimited themes
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Team collaboration
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Marketing integrations
+                                </li>
+                                <li class="flex items-start gap-3 font-semibold">
+                                    <i class="ph ph-check-circle text-brand-green text-xl flex-shrink-0 mt-0.5"></i>
+                                    Dedicated account manager
+                                </li>
+                            </ul>
+                            <a href="#" class="block w-full bg-brand-green text-black font-bold text-lg py-4 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-center">
+                                Start Free Trial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <p class="font-bold text-gray-500">All plans include a 14-day free trial. No credit card required.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== REVIEWS / TESTIMONIALS SECTION ===== -->
+        <section id="reviews" class="bg-brand-bg border-b-4 border-black py-24 relative overflow-hidden">
+            <div class="absolute -top-20 -right-20 w-80 h-80 bg-brand-pink/10 border-4 border-black rounded-full -z-0"></div>
+            <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-brand-blue/10 border-4 border-black rounded-full -z-0"></div>
+
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <div class="inline-block bg-brand-blue text-white px-4 py-1 rounded-full font-bold text-sm mb-6">💬 TESTIMONIALS</div>
+                    <h2 class="text-4xl md:text-6xl font-black text-black inline-block bg-white border-4 border-black px-6 py-3 shadow-brutal rotate-1 hover:rotate-0 transition-transform">
+                        Loved by Creators Worldwide
+                    </h2>
+                    <p class="text-xl font-semibold text-gray-600 mt-6 max-w-2xl mx-auto">Join millions of satisfied creators who trust Linkto to power their online presence.</p>
+                </div>
+
+                <!-- Rating Summary -->
+                <div class="bg-white border-4 border-black shadow-brutal p-8 mb-12 max-w-2xl mx-auto text-center">
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        <i class="ph ph-star text-brand-yellow text-3xl fill-current star-pulse"></i>
+                        <i class="ph ph-star text-brand-yellow text-3xl fill-current star-pulse" style="animation-delay: 0.2s"></i>
+                        <i class="ph ph-star text-brand-yellow text-3xl fill-current star-pulse" style="animation-delay: 0.4s"></i>
+                        <i class="ph ph-star text-brand-yellow text-3xl fill-current star-pulse" style="animation-delay: 0.6s"></i>
+                        <i class="ph ph-star text-brand-yellow text-3xl fill-current star-pulse" style="animation-delay: 0.8s"></i>
+                    </div>
+                    <p class="text-3xl font-black">4.9 out of 5 stars</p>
+                    <p class="font-semibold text-gray-500 mt-2">Based on 12,500+ reviews on Trustpilot & G2</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Review 1 -->
+                    <div class="review-card visible bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-700 leading-relaxed mb-6">
+                            "Linkto completely changed how I share my content. The affiliate hub alone increased my commission by 40%. It's like having a full e-commerce storefront in one link."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-brand-yellow border-3 border-black rounded-full overflow-hidden flex-shrink-0">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Sarah" alt="Sarah" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-black text-lg">Sarah Chen</p>
+                                <p class="font-bold text-sm text-gray-500">Tech YouTuber · 2.4M subs</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-card visible bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-700 leading-relaxed mb-6">
+                            "The analytics alone are worth it. I can see exactly which products are converting and optimize my affiliate strategy. The Neo Brutalist design is just a bonus that makes me stand out."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-brand-pink border-3 border-black rounded-full overflow-hidden flex-shrink-0">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Marcus" alt="Marcus" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-black text-lg">Marcus Rivera</p>
+                                <p class="font-bold text-sm text-gray-500">Affiliate Marketer · $500k/yr</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card visible bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-700 leading-relaxed mb-6">
+                            "I've tried every link-in-bio platform out there. Linkto is the only one that combines beautiful design with actual monetization tools. My followers actually buy through my links now."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-brand-blue border-3 border-black rounded-full overflow-hidden flex-shrink-0">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Emma" alt="Emma" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-black text-lg">Emma Watson</p>
+                                <p class="font-bold text-sm text-gray-500">Fashion Influencer · 1.2M followers</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-card visible bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-700 leading-relaxed mb-6">
+                            "The scheduling feature is a game-changer. I set up my links for the entire month and they automatically rotate. My engagement has never been higher!"
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-brand-green border-3 border-black rounded-full overflow-hidden flex-shrink-0">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Alex" alt="Alex" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-black text-lg">Alex Thompson</p>
+                                <p class="font-bold text-sm text-gray-500">Digital Creator · Newsletter writer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review-card visible bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-700 leading-relaxed mb-6">
+                            "I run a small business and Linkto has become our primary sales channel. The product grid layout makes us look like a real online store. Best decision we ever made."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-brand-yellow border-3 border-black rounded-full overflow-hidden flex-shrink-0">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Priya" alt="Priya" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-black text-lg">Priya Sharma</p>
+                                <p class="font-bold text-sm text-gray-500">Small Business Owner</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="review-card visible bg-white border-4 border-black p-8 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                            <i class="ph ph-star text-brand-yellow text-xl fill-current"></i>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-700 leading-relaxed mb-6">
+                            "The custom domain feature with Neo Brutalism themes makes my link-in-bio feel like a real website. People actually compliment my 'website' — that's the power of Linkto."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-brand-pink border-3 border-black rounded-full overflow-hidden flex-shrink-0">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=James" alt="James" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-black text-lg">James Wilson</p>
+                                <p class="font-bold text-sm text-gray-500">Music Producer · 800K streams</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trustpilot / G2 Badges -->
+                <div class="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8 border-t-4 border-black">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-star text-brand-yellow text-2xl"></i>
+                        <span class="font-bold text-gray-600">4.9 ★ on Trustpilot</span>
+                    </div>
+                    <div class="w-px h-8 bg-black/30"></div>
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-star text-brand-yellow text-2xl"></i>
+                        <span class="font-bold text-gray-600">4.8 ★ on G2</span>
+                    </div>
+                    <div class="w-px h-8 bg-black/30"></div>
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-check-circle text-brand-green text-2xl"></i>
+                        <span class="font-bold text-gray-600">99.9% Uptime SLA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ SECTION ===== -->
+        <section id="faq" class="bg-brand-bg border-b-4 border-black py-24">
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <div class="inline-block bg-brand-green text-white px-4 py-1 rounded-full font-bold text-sm mb-6">❓ FAQ</div>
+                    <h2 class="text-4xl md:text-6xl font-black text-black inline-block bg-white border-4 border-black px-6 py-3 shadow-brutal -rotate-1 hover:rotate-0 transition-transform">
+                        Got Questions?
+                    </h2>
+                    <p class="text-xl font-semibold text-gray-600 mt-6 max-w-2xl mx-auto">Everything you need to know about Linkto. Can't find what you're looking for? <a href="#" class="text-brand-pink underline">Contact our team</a>.</p>
+                </div>
+
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <details class="group">
+                            <summary class="flex items-center justify-between p-6 font-black text-xl cursor-pointer hover:bg-gray-50 transition-colors list-none">
+                                What is Linkto?
+                                <i class="ph ph-caret-down text-2xl group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-6 pb-6 border-t-4 border-black pt-4">
+                                <p class="font-semibold text-gray-700 text-lg leading-relaxed">Linkto is the ultimate link-in-bio platform designed for creators, affiliates, and businesses. Unlike traditional link-in-bio tools, Linkto combines beautiful Neo Brutalism design with powerful monetization features — including an affiliate product hub, deep analytics, and custom domains. It's everything you are, in one link.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <details class="group">
+                            <summary class="flex items-center justify-between p-6 font-black text-xl cursor-pointer hover:bg-gray-50 transition-colors list-none">
+                                Is Linkto really free?
+                                <i class="ph ph-caret-down text-2xl group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-6 pb-6 border-t-4 border-black pt-4">
+                                <p class="font-semibold text-gray-700 text-lg leading-relaxed">Yes! Our Free plan includes unlimited links, basic analytics, and one theme — forever. No time limit, no credit card required. When you're ready to grow, you can upgrade to Starter ($5/mo), Pro ($12/mo), or Premium ($24/mo) for advanced features like custom domains, monetization tools, and priority support.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <details class="group">
+                            <summary class="flex items-center justify-between p-6 font-black text-xl cursor-pointer hover:bg-gray-50 transition-colors list-none">
+                                Can I use my own domain?
+                                <i class="ph ph-caret-down text-2xl group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-6 pb-6 border-t-4 border-black pt-4">
+                                <p class="font-semibold text-gray-700 text-lg leading-relaxed">Absolutely! Custom domains are available on the Pro plan and above. Connect your own domain (like link.yourname.com) to your Linkto page — it takes less than 5 minutes to set up with our simple DNS configuration guide.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <details class="group">
+                            <summary class="flex items-center justify-between p-6 font-black text-xl cursor-pointer hover:bg-gray-50 transition-colors list-none">
+                                How does the Affiliate Hub work?
+                                <i class="ph ph-caret-down text-2xl group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-6 pb-6 border-t-4 border-black pt-4">
+                                <p class="font-semibold text-gray-700 text-lg leading-relaxed">The Affiliate Hub lets you create a visual storefront directly on your Linkto page. Simply paste a product link from supported marketplaces (Shopee, Tokopedia, Amazon, etc.) and our smart auto-scraper will fetch the image, title, and price automatically. You can organize products into categories, set custom prices, and track conversions — all from one dashboard.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-white border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <details class="group">
+                            <summary class="flex items-center justify-between p-6 font-black text-xl cursor-pointer hover:bg-gray-50 transition-colors list-none">
+                                Can I migrate from another platform?
+                                <i class="ph ph-caret-down text-2xl group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-6 pb-6 border-t-4 border-black pt-4">
+                                <p class="font-semibold text-gray-700 text-lg leading-relaxed">Yes! We offer a one-click import tool that lets you migrate your links from Linktree, Bio.link, and other major platforms. Your links, themes, and settings transfer seamlessly. Most users complete the migration in under 2 minutes.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="bg-white border-4 border-black shadow-brutal-sm overflow-hidden">
+                        <details class="group">
+                            <summary class="flex items-center justify-between p-6 font-black text-xl cursor-pointer hover:bg-gray-50 transition-colors list-none">
+                                What kind of analytics do you provide?
+                                <i class="ph ph-caret-down text-2xl group-open:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="px-6 pb-6 border-t-4 border-black pt-4">
+                                <p class="font-semibold text-gray-700 text-lg leading-relaxed">Our analytics dashboard tracks page views, link clicks, click-through rates, traffic sources, geographic data, and device information. Pro and Premium plans unlock advanced analytics including conversion tracking, revenue attribution, custom date ranges, and exportable reports. You can also integrate Meta, TikTok, and Google Pixels for advanced retargeting.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA SECTION ===== -->
+        <section id="cta" class="bg-brand-yellow border-b-4 border-black py-24 relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-10 left-10 w-32 h-32 bg-black rounded-full -z-0 float-slow"></div>
+            <div class="absolute bottom-10 right-10 w-48 h-48 bg-white border-4 border-black -z-0 rotate-12"></div>
+            <div class="absolute top-1/2 right-1/4 w-16 h-16 bg-brand-pink border-4 border-black rounded-full -z-0"></div>
+
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="inline-block bg-black text-white px-4 py-1 rounded-full font-bold text-sm mb-6">🚀 GET STARTED TODAY</div>
+                <h2 class="text-5xl md:text-7xl font-black text-black leading-[1.1] max-w-4xl mx-auto">
+                    Ready to put<br>
+                    <span class="bg-white px-4 border-4 border-black shadow-brutal inline-block mt-4 -rotate-1">everything in one link?</span>
+                </h2>
+                <p class="text-xl md:text-2xl font-bold text-black/70 mt-8 max-w-2xl mx-auto">Join 10+ million creators already using Linkto. It's free to start, takes 60 seconds to set up.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+                    <div class="relative flex-grow max-w-sm mx-auto sm:mx-0">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-lg font-bold text-gray-400">linkto.com/</span>
+                        <input type="text" placeholder="yourname" class="w-full text-lg font-bold bg-white border-4 border-black shadow-brutal rounded-none py-4 pl-[130px] pr-4 focus:outline-none focus:ring-0 focus:translate-x-[4px] focus:translate-y-[4px] focus:shadow-brutal-hover transition-all">
+                    </div>
+                    <button class="bg-black text-white font-black text-xl px-10 py-4 border-4 border-black shadow-brutal hover:shadow-brutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all whitespace-nowrap">
+                        Create Your Linkto
+                    </button>
+                </div>
+                <p class="text-sm font-bold text-black/50 mt-4">No credit card required • Free forever plan • 60 seconds setup</p>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="bg-black pt-20 pb-10 text-white">
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
+                    <div class="col-span-2 md:col-span-2">
+                        <a href="#" class="flex items-center gap-2 mb-6">
+                            <div class="w-10 h-10 bg-brand-yellow border-2 border-brand-yellow rounded-full flex items-center justify-center text-black">
+                                <i class="ph ph-link text-2xl font-bold"></i>
+                            </div>
+                            <span class="font-black text-4xl">Linkto.</span>
+                        </a>
+                        <p class="font-semibold text-gray-400 text-lg max-w-sm">The only bio link you'll ever need. Designed for creators, built for conversion.</p>
+                        <div class="flex gap-3 mt-6">
+                            <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-brand-blue hover:text-black transition-colors"><i class="ph ph-twitter-logo text-xl"></i></a>
+                            <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-brand-pink hover:text-black transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
+                            <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-white hover:text-black transition-colors"><i class="ph ph-tiktok-logo text-xl"></i></a>
+                            <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-brand-yellow hover:text-black transition-colors"><i class="ph ph-youtube-logo text-xl"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-black text-xl mb-6 text-brand-pink">Product</h4>
+                        <ul class="space-y-4 font-semibold text-gray-300">
+                            <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+                            <li><a href="#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Affiliate Hub</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Custom Domain</a></li>
+                            <li><a href="#templates" class="hover:text-white transition-colors">Templates</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Integrations</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-black text-xl mb-6 text-brand-blue">Resources</h4>
+                        <ul class="space-y-4 font-semibold text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">API Docs</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Status Page</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-black text-xl mb-6 text-brand-green">Company</h4>
+                        <ul class="space-y-4 font-semibold text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t-4 border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="font-bold text-gray-500">© 2026 Linkto Inc. All rights reserved.</p>
+                    <div class="flex gap-6 text-sm font-bold text-gray-500">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-white transition-colors">Cookie Settings</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for review cards animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.review-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
