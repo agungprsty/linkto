@@ -46,6 +46,7 @@ linkto/
         ├── db-mongodb/
         ├── backend-fastapi/
         ├── frontend-nuxt/
+        ├── design-system-neo-brutalism/
         └── project-plan/
 ```
 
