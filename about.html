@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Linkto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { yellow: '#FFD800', pink: '#FF4DF8', blue: '#4D9FFF', green: '#00E676', bg: '#F3F3F1' }
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px 0px rgba(0,0,0,1)',
+                        'brutal-sm': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'brutal-hover': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'brutal-lg': '12px 12px 0px 0px rgba(0,0,0,1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .float-slow { animation: floatSlow 6s ease-in-out infinite; }
+        @keyframes floatSlow { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+    </style>
+</head>
+<body class="bg-brand-bg text-black antialiased overflow-x-hidden selection:bg-brand-pink selection:text-white">
+
+    <!-- NAV -->
+    <nav class="sticky top-0 w-full bg-brand-bg border-b-4 border-black z-50">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center -rotate-12 hover:rotate-0 transition-transform">
+                        <i class="ph ph-link text-brand-yellow text-2xl font-bold"></i>
+                    </div>
+                    <span class="font-black text-3xl tracking-tight">Linkto.</span>
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="login.html" class="hidden md:block font-bold text-lg hover:underline decoration-4 underline-offset-4 bg-white border-2 border-transparent px-4 py-2 hover:border-black rounded-lg transition-all">Log in</a>
+                    <a href="register.html" class="bg-black text-white font-bold text-base md:text-lg px-6 py-3 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full flex items-center gap-2">
+                        Sign Up Free <i class="ph ph-arrow-right font-bold"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-brand-bg border-b-4 border-black">
+        <!-- Desktop decorative elements -->
+        <div class="hidden md:block absolute top-10 left-10 w-48 h-48 bg-brand-yellow border-4 border-black rounded-full -z-0 float-slow"></div>
+        <div class="hidden md:block absolute bottom-10 right-10 w-36 h-36 bg-brand-pink border-4 border-black -z-0 rotate-12"></div>
+        <!-- Mobile decorative elements (small, unobtrusive) -->
+        <div class="md:hidden absolute -top-6 -right-6 w-24 h-24 bg-brand-pink border-4 border-black -z-0 rotate-12 opacity-30"></div>
+        <div class="md:hidden absolute -bottom-4 -left-4 w-16 h-16 bg-brand-yellow border-4 border-black rounded-full -z-0 opacity-30"></div>
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center relative z-10">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.1]">
+                We're on a mission to<br>
+                <span class="bg-brand-yellow px-4 border-4 border-black shadow-brutal inline-block mt-3 md:mt-4 -rotate-1 hover:rotate-1 transition-transform">empower every creator.</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl font-semibold text-gray-700 mt-6 md:mt-8 max-w-3xl mx-auto">Linkto was born from a simple idea: everyone deserves a beautiful, powerful link-in-bio that actually helps them grow. No coding. No hassle. Just pure conversion.</p>
+        </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="bg-white border-4 border-black shadow-brutal p-8 -rotate-1 hover:rotate-0 transition-transform">
+                <h2 class="text-3xl font-black mb-4">Our Story</h2>
+                <p class="font-semibold text-gray-700 leading-relaxed mb-4">Founded in 2026, Linkto started as a side project by a group of creators who were frustrated with the limited options for link-in-bio platforms. We wanted something that didn't just look good, but actually helped creators make money.</p>
+                <p class="font-semibold text-gray-700 leading-relaxed">Today, Linkto powers over 10 million creators worldwide — from solo influencers to Fortune 500 companies. We've built the most customizable, conversion-optimized link-in-bio platform on the market.</p>
+            </div>
+            <div class="bg-brand-blue border-4 border-black shadow-brutal-lg p-8 rotate-1 hover:rotate-0 transition-transform">
+                <div class="grid grid-cols-2 gap-6 text-center">
+                    <div><p class="text-4xl font-black">10M+</p><p class="font-bold text-sm">Creators</p></div>
+                    <div><p class="text-4xl font-black">195+</p><p class="font-bold text-sm">Countries</p></div>
+                    <div><p class="text-4xl font-black">500M+</p><p class="font-bold text-sm">Monthly Views</p></div>
+                    <div><p class="text-4xl font-black">$50M+</p><p class="font-bold text-sm">Affiliate Sales</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="bg-black border-y-4 border-black py-12 md:py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-12">What we stand for</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white border-4 border-black shadow-brutal p-8 hover:-translate-y-2 transition-all">
+                    <div class="w-14 h-14 bg-brand-pink border-4 border-black rounded-full flex items-center justify-center mx-auto mb-5 -rotate-6"><i class="ph ph-hand-heart text-3xl font-bold"></i></div>
+                    <h3 class="font-black text-xl mb-3">Creator First</h3>
+                    <p class="font-semibold text-gray-600">Every feature we build starts with a creator's need. We put our users before profits.</p>
+                </div>
+                <div class="bg-white border-4 border-black shadow-brutal p-8 hover:-translate-y-2 transition-all">
+                    <div class="w-14 h-14 bg-brand-yellow border-4 border-black rounded-full flex items-center justify-center mx-auto mb-5 rotate-3"><i class="ph ph-lightning text-3xl font-bold"></i></div>
+                    <h3 class="font-black text-xl mb-3">Radical Simplicity</h3>
+                    <p class="font-semibold text-gray-600">Powerful tools don't have to be complicated. We make the complex simple.</p>
+                </div>
+                <div class="bg-white border-4 border-black shadow-brutal p-8 hover:-translate-y-2 transition-all">
+                    <div class="w-14 h-14 bg-brand-green border-4 border-black rounded-full flex items-center justify-center mx-auto mb-5 -rotate-3"><i class="ph ph-globe text-3xl font-bold"></i></div>
+                    <h3 class="font-black text-xl mb-3">Open & Accessible</h3>
+                    <p class="font-semibold text-gray-600">Linkto is free to start. Everyone deserves a beautiful link-in-bio, regardless of budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-black inline-block bg-white border-4 border-black px-6 py-3 shadow-brutal rotate-1 hover:rotate-0 transition-transform">Meet the Team</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white border-4 border-black shadow-brutal-sm p-6 text-center hover:shadow-brutal hover:-translate-y-1 transition-all">
+                <div class="w-20 h-20 mx-auto rounded-full border-4 border-black bg-brand-yellow flex items-center justify-center mb-4"><span class="font-black text-2xl">AP</span></div>
+                <h3 class="font-black">Agung Prastyo</h3>
+                <p class="text-sm font-bold text-gray-500">Founder & CEO</p>
+            </div>
+            <div class="bg-white border-4 border-black shadow-brutal-sm p-6 text-center hover:shadow-brutal hover:-translate-y-1 transition-all">
+                <div class="w-20 h-20 mx-auto rounded-full border-4 border-black bg-brand-pink flex items-center justify-center mb-4"><span class="font-black text-2xl">SC</span></div>
+                <h3 class="font-black">Sarah Chen</h3>
+                <p class="text-sm font-bold text-gray-500">CTO</p>
+            </div>
+            <div class="bg-white border-4 border-black shadow-brutal-sm p-6 text-center hover:shadow-brutal hover:-translate-y-1 transition-all">
+                <div class="w-20 h-20 mx-auto rounded-full border-4 border-black bg-brand-blue flex items-center justify-center mb-4"><span class="font-black text-2xl">MR</span></div>
+                <h3 class="font-black">Marcus Rivera</h3>
+                <p class="text-sm font-bold text-gray-500">Head of Product</p>
+            </div>
+            <div class="bg-white border-4 border-black shadow-brutal-sm p-6 text-center hover:shadow-brutal hover:-translate-y-1 transition-all">
+                <div class="w-20 h-20 mx-auto rounded-full border-4 border-black bg-brand-green flex items-center justify-center mb-4"><span class="font-black text-2xl">PS</span></div>
+                <h3 class="font-black">Priya Sharma</h3>
+                <p class="text-sm font-bold text-gray-500">Head of Design</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-brand-yellow border-y-4 border-black py-12 md:py-20 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-black">Join 10M+ creators</h2>
+            <p class="text-xl font-bold text-black/70 mt-4 mb-8">Start your Linkto journey today. It's free.</p>
+            <a href="register.html" class="inline-flex items-center gap-2 bg-black text-white font-black text-xl px-10 py-5 border-4 border-black shadow-brutal hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Create Your Linkto <i class="ph ph-arrow-right font-bold"></i></a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-10 text-white">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="font-bold text-gray-500">© 2026 Linkto Inc. All rights reserved.</p>
+            <div class="flex gap-6 text-sm font-bold text-gray-500">
+                <a href="about.html" class="text-white underline decoration-4 underline-offset-2">About Us</a>
+                <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                <a href="community.html" class="hover:text-white transition-colors">Community</a>
+                <a href="cookie.html" class="hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Linkto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { yellow: '#FFD800', pink: '#FF4DF8', blue: '#4D9FFF', green: '#00E676', bg: '#F3F3F1' }
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px 0px rgba(0,0,0,1)',
+                        'brutal-sm': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'brutal-hover': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'brutal-lg': '12px 12px 0px 0px rgba(0,0,0,1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .float-slow { animation: floatSlow 6s ease-in-out infinite; }
+        @keyframes floatSlow { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    </style>
+</head>
+<body class="bg-brand-bg text-black antialiased overflow-x-hidden selection:bg-brand-pink selection:text-white">
+
+    <!-- NAV -->
+    <nav class="sticky top-0 w-full bg-brand-bg border-b-4 border-black z-50">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center -rotate-12 hover:rotate-0 transition-transform">
+                        <i class="ph ph-link text-brand-yellow text-2xl font-bold"></i>
+                    </div>
+                    <span class="font-black text-3xl tracking-tight">Linkto.</span>
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="login.html" class="hidden md:block font-bold text-lg hover:underline decoration-4 underline-offset-4 bg-white border-2 border-transparent px-4 py-2 hover:border-black rounded-lg transition-all">Log in</a>
+                    <a href="register.html" class="bg-black text-white font-bold text-base md:text-lg px-6 py-3 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full flex items-center gap-2">
+                        Sign Up Free <i class="ph ph-arrow-right font-bold"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="bg-brand-bg border-b-4 border-black py-16 md:py-20 text-center relative overflow-hidden">
+        <!-- Desktop decorative elements -->
+        <div class="hidden md:block absolute top-5 left-5 w-24 h-24 bg-brand-green border-4 border-black rounded-full -z-0 float-slow"></div>
+        <div class="hidden md:block absolute bottom-5 right-5 w-32 h-32 bg-brand-pink border-4 border-black -z-0 rotate-12"></div>
+        <!-- Mobile decorative elements (subtle) -->
+        <div class="md:hidden absolute -top-4 -right-4 w-16 h-16 bg-brand-pink border-4 border-black -z-0 rotate-12 opacity-30"></div>
+        <div class="md:hidden absolute -bottom-4 -left-4 w-20 h-20 bg-brand-green border-4 border-black rounded-full -z-0 opacity-30"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.1]">
+                Tips, tricks &<br>
+                <span class="bg-brand-yellow px-4 border-4 border-black shadow-brutal inline-block mt-3 md:mt-4 -rotate-1 hover:rotate-1 transition-transform">growth strategies.</span>
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl font-semibold text-gray-700 mt-6 md:mt-8 max-w-2xl mx-auto">Learn how to grow your audience, optimize your affiliate sales, and build your brand online — straight from the Linkto team.</p>
+        </div>
+    </section>
+
+    <!-- FEATURED POST -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+        <div class="bg-brand-blue border-4 border-black shadow-brutal-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
+            <div class="p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4">How Top Affiliates Make 6 Figures Using Linkto</h2>
+                <p class="font-semibold text-black/70 text-base sm:text-lg mb-6">Discover the strategies top creators use to optimize their affiliate sales with Linkto's built-in product hub and analytics tools.</p>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm font-bold">
+                    <span>By Marcus Rivera</span>
+                    <span>•</span>
+                    <span>Jun 25, 2026</span>
+                    <span>•</span>
+                    <span>8 min read</span>
+                </div>
+                <a href="#" class="mt-6 inline-flex items-center gap-2 bg-black text-white font-black px-6 py-3 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full w-fit">Read Article <i class="ph ph-arrow-right"></i></a>
+            </div>
+            <div class="bg-brand-yellow border-t-4 md:border-t-0 md:border-l-4 border-black flex items-center justify-center p-8">
+                <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-white border-4 border-black shadow-brutal rounded-full flex items-center justify-center -rotate-6">
+                    <i class="ph ph-trend-up text-4xl sm:text-5xl md:text-7xl font-bold"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG CONTENT: SIDEBAR + GRID -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+
+            <!-- ==================== SIDEBAR (FACETED SEARCH) ==================== -->
+            <!-- Mobile filter toggle -->
+            <div class="md:hidden mb-2">
+                <button id="filterToggle" class="w-full bg-white border-4 border-black shadow-brutal-sm py-3 px-5 font-black text-base flex items-center justify-between hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+                    <span class="flex items-center gap-2"><i class="ph ph-funnel"></i> Filters</span>
+                    <span id="filterCount" class="bg-brand-pink text-white text-xs px-2 py-0.5 rounded-full">2</span>
+                </button>
+            </div>
+
+            <!-- Sidebar panel -->
+            <aside id="filterSidebar" class="w-full md:w-72 flex-shrink-0 hidden md:block">
+                <div class="bg-white border-4 border-black shadow-brutal-sm p-5 md:p-6 space-y-6">
+
+                    <!-- Search -->
+                    <div>
+                        <label class="font-black text-sm flex items-center gap-2 mb-2"><i class="ph ph-magnifying-glass"></i> Search</label>
+                        <input type="text" placeholder="Search articles..." class="w-full border-4 border-black py-2.5 px-3 font-semibold text-sm bg-brand-bg focus:outline-none focus:shadow-brutal-hover focus:translate-x-[1px] focus:translate-y-[1px] transition-all">
+                    </div>
+
+                    <!-- Categories -->
+                    <div>
+                        <label class="font-black text-sm flex items-center gap-2 mb-3"><i class="ph ph-folder"></i> Category</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" checked class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">All Posts</span>
+                                <span class="ml-auto text-xs font-bold text-gray-400">12</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" checked class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">Affiliate</span>
+                                <span class="ml-auto text-xs font-bold text-gray-400">3</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" checked class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">Analytics</span>
+                                <span class="ml-auto text-xs font-bold text-gray-400">2</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" checked class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">Design</span>
+                                <span class="ml-auto text-xs font-bold text-gray-400">2</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">Marketing</span>
+                                <span class="ml-auto text-xs font-bold text-gray-400">2</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">Product Updates</span>
+                                <span class="ml-auto text-xs font-bold text-gray-400">1</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Tags -->
+                    <div>
+                        <label class="font-black text-sm flex items-center gap-2 mb-3"><i class="ph ph-tag"></i> Tags</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="px-3 py-1.5 text-xs font-bold border-4 border-black bg-black text-white shadow-brutal-sm transition-all">beginner</button>
+                            <button class="px-3 py-1.5 text-xs font-bold border-4 border-black bg-white text-black shadow-brutal-sm hover:bg-black hover:text-white transition-all">advanced</button>
+                            <button class="px-3 py-1.5 text-xs font-bold border-4 border-black bg-white text-black shadow-brutal-sm hover:bg-black hover:text-white transition-all">tutorial</button>
+                            <button class="px-3 py-1.5 text-xs font-bold border-4 border-black bg-white text-black shadow-brutal-sm hover:bg-black hover:text-white transition-all">case-study</button>
+                            <button class="px-3 py-1.5 text-xs font-bold border-4 border-black bg-white text-black shadow-brutal-sm hover:bg-black hover:text-white transition-all">tips</button>
+                            <button class="px-3 py-1.5 text-xs font-bold border-4 border-black bg-white text-black shadow-brutal-sm hover:bg-black hover:text-white transition-all">product</button>
+                        </div>
+                    </div>
+
+                    <!-- Date -->
+                    <div>
+                        <label class="font-black text-sm flex items-center gap-2 mb-3"><i class="ph ph-calendar"></i> Date</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="radio" name="date" class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">All Time</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="radio" name="date" checked class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">This Month</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="radio" name="date" class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">Last 3 Months</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="radio" name="date" class="w-5 h-5 border-4 border-black accent-black">
+                                <span class="font-bold text-sm group-hover:underline">This Year</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Clear -->
+                    <button class="w-full bg-brand-pink text-white font-black py-3 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all text-sm flex items-center justify-center gap-2">
+                        <i class="ph ph-x-circle"></i> Clear All Filters
+                    </button>
+
+                </div>
+            </aside>
+
+            <!-- ==================== POSTS GRID ==================== -->
+            <div class="flex-1 min-w-0">
+
+                <!-- Active filters indicator -->
+                <div class="hidden md:flex items-center gap-2 mb-6 text-sm font-bold text-gray-500">
+                    <i class="ph ph-funnel"></i>
+                    <span><span class="text-black">2</span> filters active</span>
+                    <span class="text-gray-300">|</span>
+                    <span>Showing <span class="text-black">8</span> of 12 articles</span>
+                    <button class="ml-auto text-brand-pink hover:underline underline-offset-2">Clear all</button>
+                </div>
+
+                <!-- Results -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <article class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden">
+                        <div class="h-40 sm:h-44 bg-gradient-to-br from-brand-pink to-brand-yellow border-b-4 border-black flex items-center justify-center"><i class="ph ph-chart-line-up text-5xl sm:text-6xl font-bold"></i></div>
+                        <div class="p-5 sm:p-6">
+                            <span class="text-xs font-bold bg-brand-pink text-white px-2 py-1 rounded-full">Analytics</span>
+                            <h3 class="font-black text-lg sm:text-xl mt-3 mb-2">Understanding Your Linkto Analytics Dashboard</h3>
+                            <p class="font-semibold text-gray-600 text-sm mb-4">A complete guide to tracking your clicks, views, and conversions.</p>
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-400">
+                                <span>Jun 22, 2026</span>
+                                <a href="#" class="text-brand-blue hover:underline underline-offset-2">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden">
+                        <div class="h-40 sm:h-44 bg-gradient-to-br from-brand-green to-brand-blue border-b-4 border-black flex items-center justify-center"><i class="ph ph-paint-roller text-5xl sm:text-6xl font-bold"></i></div>
+                        <div class="p-5 sm:p-6">
+                            <span class="text-xs font-bold bg-brand-green text-black px-2 py-1 rounded-full">Design</span>
+                            <h3 class="font-black text-lg sm:text-xl mt-3 mb-2">5 Neo Brutalism Themes to Make Your Bio Pop</h3>
+                            <p class="font-semibold text-gray-600 text-sm mb-4">Stand out from the crowd with these bold, customizable themes.</p>
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-400">
+                                <span>Jun 18, 2026</span>
+                                <a href="#" class="text-brand-blue hover:underline underline-offset-2">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden">
+                        <div class="h-40 sm:h-44 bg-gradient-to-br from-brand-yellow to-brand-pink border-b-4 border-black flex items-center justify-center"><i class="ph ph-shopping-bag text-5xl sm:text-6xl font-bold"></i></div>
+                        <div class="p-5 sm:p-6">
+                            <span class="text-xs font-bold bg-brand-yellow text-black px-2 py-1 rounded-full">Affiliate</span>
+                            <h3 class="font-black text-lg sm:text-xl mt-3 mb-2">Smart Affiliate Scraper: A Complete Walkthrough</h3>
+                            <p class="font-semibold text-gray-600 text-sm mb-4">How to use our auto-scraper to add products in seconds.</p>
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-400">
+                                <span>Jun 14, 2026</span>
+                                <a href="#" class="text-brand-blue hover:underline underline-offset-2">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden">
+                        <div class="h-40 sm:h-44 bg-gradient-to-br from-brand-blue to-brand-green border-b-4 border-black flex items-center justify-center"><i class="ph ph-megaphone text-5xl sm:text-6xl font-bold"></i></div>
+                        <div class="p-5 sm:p-6">
+                            <span class="text-xs font-bold bg-brand-blue text-white px-2 py-1 rounded-full">Marketing</span>
+                            <h3 class="font-black text-lg sm:text-xl mt-3 mb-2">10 Ways to Promote Your Linkto Page on Instagram</h3>
+                            <p class="font-semibold text-gray-600 text-sm mb-4">Maximize your Instagram bio link with these proven strategies.</p>
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-400">
+                                <span>Jun 10, 2026</span>
+                                <a href="#" class="text-brand-blue hover:underline underline-offset-2">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden">
+                        <div class="h-40 sm:h-44 bg-gradient-to-br from-brand-pink to-brand-blue border-b-4 border-black flex items-center justify-center"><i class="ph ph-rocket text-5xl sm:text-6xl font-bold"></i></div>
+                        <div class="p-5 sm:p-6">
+                            <span class="text-xs font-bold bg-black text-white px-2 py-1 rounded-full">Product Updates</span>
+                            <h3 class="font-black text-lg sm:text-xl mt-3 mb-2">What's New in Linkto V2.0</h3>
+                            <p class="font-semibold text-gray-600 text-sm mb-4">Explore the latest features including the Affiliate Hub and new templates.</p>
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-400">
+                                <span>Jun 5, 2026</span>
+                                <a href="#" class="text-brand-blue hover:underline underline-offset-2">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white border-4 border-black shadow-brutal hover:shadow-brutal-lg hover:-translate-y-2 transition-all overflow-hidden">
+                        <div class="h-40 sm:h-44 bg-gradient-to-br from-brand-green to-brand-yellow border-b-4 border-black flex items-center justify-center"><i class="ph ph-users-three text-5xl sm:text-6xl font-bold"></i></div>
+                        <div class="p-5 sm:p-6">
+                            <span class="text-xs font-bold bg-brand-green text-black px-2 py-1 rounded-full">Community</span>
+                            <h3 class="font-black text-lg sm:text-xl mt-3 mb-2">Creator Spotlight: How Sarah Grew to 100K Followers</h3>
+                            <p class="font-semibold text-gray-600 text-sm mb-4">Learn from successful creators using Linkto to build their brands.</p>
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-400">
+                                <span>Jun 1, 2026</span>
+                                <a href="#" class="text-brand-blue hover:underline underline-offset-2">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="text-center mt-10 md:mt-12">
+                    <button class="bg-black text-white font-black text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4 border-4 border-black shadow-brutal hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full inline-flex items-center gap-2">Load More Articles <i class="ph ph-arrow-down"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="bg-brand-yellow border-y-4 border-black py-16 text-center">
+        <div class="max-w-2xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-black mb-4">Get the latest posts</h2>
+            <p class="font-semibold text-black/70 mb-6">Subscribe to our newsletter and receive weekly tips, updates, and success stories.</p>
+            <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                <input type="email" placeholder="your@email.com" required class="flex-1 border-4 border-black py-3.5 px-4 font-semibold bg-white shadow-brutal-sm focus:shadow-brutal-hover focus:translate-x-[2px] focus:translate-y-[2px] outline-none transition-all">
+                <button type="submit" class="bg-black text-white font-black px-8 py-3.5 border-4 border-black shadow-brutal-sm hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-10 text-white">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="font-bold text-gray-500">© 2026 Linkto Inc. All rights reserved.</p>
+            <div class="flex gap-6 text-sm font-bold text-gray-500">
+                <a href="about.html" class="hover:text-white transition-colors">About Us</a>
+                <a href="blog.html" class="text-white underline decoration-4 underline-offset-2">Blog</a>
+                <a href="community.html" class="hover:text-white transition-colors">Community</a>
+                <a href="cookie.html" class="hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile filter toggle
+        const filterToggle = document.getElementById('filterToggle');
+        const filterSidebar = document.getElementById('filterSidebar');
+        if (filterToggle && filterSidebar) {
+            filterToggle.addEventListener('click', function() {
+                const isHidden = filterSidebar.classList.contains('hidden');
+                filterSidebar.classList.toggle('hidden', !isHidden);
+                filterSidebar.classList.toggle('block', isHidden);
+                this.classList.toggle('shadow-brutal-sm', isHidden);
+                this.classList.toggle('shadow-brutal-hover', !isHidden);
+            });
+        }
+
+        // Tag filter toggle
+        document.querySelectorAll('#filterSidebar .flex-wrap button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const isActive = this.classList.contains('bg-black');
+                if (isActive) {
+                    this.classList.remove('bg-black', 'text-white');
+                    this.classList.add('bg-white', 'text-black');
+                } else {
+                    this.classList.remove('bg-white', 'text-black');
+                    this.classList.add('bg-black', 'text-white');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
