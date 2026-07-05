@@ -13,18 +13,20 @@ export function useAuth() {
   const username = computed(() => authStore.username)
 
   // Methods
-  async function login(email: string, password: string) {
-    await authStore.login(email, password)
-    if (authStore.isAuthenticated) {
+  async function login(email: string, password: string): Promise<boolean> {
+    const success = await authStore.login(email, password)
+    if (success && !authStore.error) {
       await router.push('/dashboard')
     }
+    return success
   }
 
-  async function register(email: string, password: string, fullName?: string, usernameVal?: string) {
-    await authStore.register(email, password, fullName, usernameVal)
-    if (authStore.isAuthenticated) {
+  async function register(email: string, password: string, fullName?: string, usernameVal?: string): Promise<boolean> {
+    const success = await authStore.register(email, password, fullName, usernameVal)
+    if (success && !authStore.error) {
       await router.push('/dashboard')
     }
+    return success
   }
 
   async function logout() {

@@ -2,7 +2,6 @@
   <div>
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div class="text-center mb-12">
-        <div class="inline-block bg-black text-white px-4 py-1 rounded-full font-bold text-sm mb-6">📝 BLOG</div>
         <h1 class="text-5xl md:text-6xl font-black">The Linkto Blog</h1>
         <p class="text-lg font-semibold text-gray-500 mt-4 max-w-2xl mx-auto">Tips, tricks, and insights for creators, affiliates, and brands.</p>
       </div>

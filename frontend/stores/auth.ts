@@ -13,7 +13,7 @@ export const useAuthStore = defineStore('auth', () => {
   const username = computed(() => user.value?.username || '')
 
   // Actions
-  async function login(email: string, password: string): Promise<void> {
+  async function login(email: string, password: string): Promise<boolean> {
     loading.value = true
     error.value = null
     try {
@@ -25,15 +25,25 @@ export const useAuthStore = defineStore('auth', () => {
 
       accessToken.value = data.access_token
       user.value = data.user || null
+      return true
     } catch (e: any) {
-      error.value = e?.data?.detail?.message || e?.message || 'Login failed'
-      throw e
+      const detail = e?.data?.detail
+      if (Array.isArray(detail)) {
+        error.value = detail.map((d: any) => d.msg).join(', ')
+      } else if (typeof detail === 'string') {
+        error.value = detail
+      } else if (detail?.message) {
+        error.value = detail.message
+      } else {
+        error.value = e?.message || 'Login failed. Please check your credentials.'
+      }
+      return false
     } finally {
       loading.value = false
     }
   }
 
-  async function register(email: string, password: string, fullName?: string, username?: string): Promise<void> {
+  async function register(email: string, password: string, fullName?: string, username?: string): Promise<boolean> {
     loading.value = true
     error.value = null
     try {
@@ -48,9 +58,19 @@ export const useAuthStore = defineStore('auth', () => {
 
       accessToken.value = data.access_token
       user.value = data.user || null
+      return true
     } catch (e: any) {
-      error.value = e?.data?.detail?.message || e?.message || 'Registration failed'
-      throw e
+      const detail = e?.data?.detail
+      if (Array.isArray(detail)) {
+        error.value = detail.map((d: any) => d.msg).join(', ')
+      } else if (typeof detail === 'string') {
+        error.value = detail
+      } else if (detail?.message) {
+        error.value = detail.message
+      } else {
+        error.value = e?.message || 'Registration failed. Please try again.'
+      }
+      return false
     } finally {
       loading.value = false
     }

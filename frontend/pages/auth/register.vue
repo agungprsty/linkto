@@ -34,8 +34,8 @@
           </div>
 
           <!-- Error message -->
-          <div v-if="auth.error" class="bg-red-50 border-4 border-red-500 p-4 mb-6">
-            <p class="font-bold text-red-700 text-sm">{{ auth.error || 'An unexpected error occurred' }}</p>
+          <div v-if="authError" class="bg-red-50 border-4 border-red-500 p-4 mb-6">
+            <p class="font-bold text-red-700 text-sm">{{ authError }}</p>
           </div>
 
           <!-- Form -->
@@ -58,13 +58,13 @@
             </div>
 
             <div class="flex items-start gap-3 text-sm">
-              <input type="checkbox" required class="w-5 h-5 mt-0.5 border-4 border-black accent-black flex-shrink-0">
+              <input v-model="agreedToTerms" type="checkbox" required class="w-5 h-5 mt-0.5 border-4 border-black accent-black flex-shrink-0">
               <span class="font-semibold text-gray-600">I agree to the <NuxtLink to="/terms" class="text-brand-blue font-bold underline decoration-2 underline-offset-2">Terms of Service</NuxtLink> and <NuxtLink to="/privacy" class="text-brand-blue font-bold underline decoration-2 underline-offset-2">Privacy Policy</NuxtLink>.</span>
             </div>
 
-            <button type="submit" :disabled="auth.loading ? true : false"
+            <button type="submit" :disabled="submitting"
               class="w-full bg-brand-pink text-black font-black text-lg py-4 border-4 border-black shadow-brutal hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
-              <template v-if="auth.loading">
+              <template v-if="submitting">
                 <Icon name="ph:spinner" class="animate-spin" /> Creating account...
               </template>
               <template v-else>
@@ -122,14 +122,18 @@ definePageMeta({
 import { useAuthStore } from '~/stores/auth'
 
 const auth = useAuth()
+const authStore = useAuthStore()
 const email = ref('')
 const password = ref('')
+const agreedToTerms = ref(false)
+const submitting = ref(false)
 
-// Reset error & loading state when mounting this page
+// Error message that always unwraps correctly (ref -> string)
+const authError = computed(() => authStore.error || '')
+
+// Reset error when mounting this page (loading state is local now)
 onMounted(() => {
-  const store = useAuthStore()
-  store.error = null
-  store.loading = false
+  authStore.error = null
 })
 
 function getPasswordStrength(): number {
@@ -154,14 +158,33 @@ function passwordStrengthClass(barIndex: number): string {
 async function handleRegister() {
   // Validate inputs before calling API
   if (!email.value || !password.value) {
-    const store = useAuthStore()
-    store.error = 'Please fill in all fields'
+    authStore.error = 'Please fill in all fields'
     return
   }
+
+  if (!agreedToTerms.value) {
+    authStore.error = 'You must agree to the Terms of Service and Privacy Policy.'
+    return
+  }
+
+  submitting.value = true
+  authStore.error = null
+
   try {
     await auth.register(email.value, password.value)
-  } catch {
-    // Error handled by store
+  } catch (e: any) {
+    const detail = e?.data?.detail
+    if (Array.isArray(detail)) {
+      authStore.error = detail.map((d: any) => d.msg).join(', ')
+    } else if (typeof detail === 'string') {
+      authStore.error = detail
+    } else if (detail?.message) {
+      authStore.error = detail.message
+    } else {
+      authStore.error = e?.message || 'Registration failed. Please try again.'
+    }
+  } finally {
+    submitting.value = false
   }
 }
 

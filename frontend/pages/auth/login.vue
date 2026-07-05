@@ -34,8 +34,8 @@
           </div>
 
           <!-- Error message -->
-          <div v-if="auth.error" class="bg-red-50 border-4 border-red-500 p-4 mb-6">
-            <p class="font-bold text-red-700 text-sm">{{ auth.error || 'An unexpected error occurred' }}</p>
+          <div v-if="authError" class="bg-red-50 border-4 border-red-500 p-4 mb-6">
+            <p class="font-bold text-red-700 text-sm">{{ authError }}</p>
           </div>
 
           <!-- Form -->
@@ -59,9 +59,9 @@
               <NuxtLink to="/auth/forgot-password" class="font-bold text-brand-blue hover:underline underline-offset-4 decoration-4">Forgot password?</NuxtLink>
             </div>
 
-            <button type="submit" :disabled="auth.loading ? true : false"
+            <button type="submit" :disabled="submitting"
               class="w-full bg-brand-pink text-black font-black text-lg py-4 border-4 border-black shadow-brutal hover:shadow-brutal-hover hover:translate-x-[2px] hover:translate-y-[2px] transition-all rounded-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
-              <template v-if="auth.loading">
+              <template v-if="submitting">
                 <Icon name="ph:spinner" class="animate-spin" /> Logging in...
               </template>
               <template v-else>
@@ -119,27 +119,46 @@ definePageMeta({
 import { useAuthStore } from '~/stores/auth'
 
 const auth = useAuth()
+const authStore = useAuthStore()
 const email = ref('')
 const password = ref('')
+const submitting = ref(false)
 
-// Reset error & loading state when mounting this page
+// Error message that always unwraps correctly (ref -> string)
+const authError = computed(() => authStore.error || '')
+
+// Reset error when mounting this page (loading state is local now)
 onMounted(() => {
-  const store = useAuthStore()
-  store.error = null
-  store.loading = false
+  authStore.error = null
 })
 
 async function handleLogin() {
   // Validate inputs before calling API
   if (!email.value || !password.value) {
-    const store = useAuthStore()
-    store.error = 'Please fill in all fields'
+    authStore.error = 'Please fill in all fields'
     return
   }
+
+  submitting.value = true
+  authStore.error = null
+
   try {
     await auth.login(email.value, password.value)
-  } catch {
-    // Error is handled by store
+  } catch (e: any) {
+    // Set a user-friendly message from API response or generic fallback
+    const detail = e?.data?.detail
+    if (Array.isArray(detail)) {
+      // FastAPI validation errors: [{msg, loc, type}]
+      authStore.error = detail.map((d: any) => d.msg).join(', ')
+    } else if (typeof detail === 'string') {
+      authStore.error = detail
+    } else if (detail?.message) {
+      authStore.error = detail.message
+    } else {
+      authStore.error = e?.message || 'Login failed. Please check your credentials.'
+    }
+  } finally {
+    submitting.value = false
   }
 }
 
