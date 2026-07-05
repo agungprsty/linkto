@@ -5,13 +5,9 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-
-// Initialize auth state on app mount (skip on auth pages)
+// Initialize auth state on app mount
 const { initAuth } = useAuth()
 onMounted(() => {
-  if (!route.path.startsWith('/auth')) {
-    initAuth()
-  }
+  initAuth()
 })
 </script>

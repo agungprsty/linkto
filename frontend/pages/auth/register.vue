@@ -117,6 +117,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'default',
+  middleware: 'guest',
 })
 
 import { useAuthStore } from '~/stores/auth'
