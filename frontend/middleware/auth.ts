@@ -1,3 +1,5 @@
+import { useAuthStore } from '~/stores/auth'
+
 export default defineNuxtRouteMiddleware(async (to, from) => {
   // Only protect dashboard routes
   if (!to.path.startsWith('/dashboard')) return

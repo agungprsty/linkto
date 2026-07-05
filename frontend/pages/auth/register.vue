@@ -171,7 +171,17 @@ async function handleRegister() {
   authStore.error = null
 
   try {
-    await auth.register(email.value, password.value)
+    const success = await auth.register(email.value, password.value)
+
+    if (success) {
+      await navigateTo('/dashboard')
+      return
+    }
+
+    // Registration failed — if store didn't set an error, use generic fallback
+    if (!authStore.error) {
+      authStore.error = 'Registration failed. Please try again.'
+    }
   } catch (e: any) {
     const detail = e?.data?.detail
     if (Array.isArray(detail)) {

@@ -162,6 +162,9 @@
 </template>
 
 <script setup lang="ts">
+import { useAuthStore } from '~/stores/auth'
+import { useThemeStore } from '~/stores/theme'
+
 definePageMeta({
   layout: 'dashboard',
   middleware: 'auth',

@@ -178,6 +178,7 @@ definePageMeta({
 
 import { VueDraggable } from 'vue-draggable-plus'
 import type { Link, CreateLinkRequest, UpdateLinkRequest } from '~/types'
+import { useLinksStore } from '~/stores/links'
 
 const linksStore = useLinksStore()
 const dragItems = ref<Link[]>([])

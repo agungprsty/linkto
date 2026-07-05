@@ -91,6 +91,8 @@
 </template>
 
 <script setup lang="ts">
+import { useLinksStore } from '~/stores/links'
+
 definePageMeta({
   layout: 'dashboard',
   middleware: 'auth',

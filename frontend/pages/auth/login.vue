@@ -143,19 +143,28 @@ async function handleLogin() {
   authStore.error = null
 
   try {
-    await auth.login(email.value, password.value)
+    const success = await auth.login(email.value, password.value)
+
+    if (success) {
+      await navigateTo('/dashboard')
+      return
+    }
+
+    // Login failed — if store didn't set an error, use generic fallback
+    if (!authStore.error) {
+      authStore.error = 'Login failed. Please check your credentials.'
+    }
   } catch (e: any) {
-    // Set a user-friendly message from API response or generic fallback
+    // Unexpected error (network failure, etc.)
     const detail = e?.data?.detail
     if (Array.isArray(detail)) {
-      // FastAPI validation errors: [{msg, loc, type}]
       authStore.error = detail.map((d: any) => d.msg).join(', ')
     } else if (typeof detail === 'string') {
       authStore.error = detail
     } else if (detail?.message) {
       authStore.error = detail.message
     } else {
-      authStore.error = e?.message || 'Login failed. Please check your credentials.'
+      authStore.error = e?.message || 'An unexpected error occurred. Please try again.'
     }
   } finally {
     submitting.value = false

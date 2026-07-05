@@ -61,6 +61,9 @@
 </template>
 
 <script setup lang="ts">
+import { useAuthStore } from '~/stores/auth'
+import { useLinksStore } from '~/stores/links'
+
 const authStore = useAuthStore()
 const linksStore = useLinksStore()
 </script>

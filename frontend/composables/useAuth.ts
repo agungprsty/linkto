@@ -15,18 +15,12 @@ export function useAuth() {
   // Methods
   async function login(email: string, password: string): Promise<boolean> {
     const success = await authStore.login(email, password)
-    if (success && !authStore.error) {
-      await router.push('/dashboard')
-    }
-    return success
+    return success && !authStore.error
   }
 
   async function register(email: string, password: string, fullName?: string, usernameVal?: string): Promise<boolean> {
     const success = await authStore.register(email, password, fullName, usernameVal)
-    if (success && !authStore.error) {
-      await router.push('/dashboard')
-    }
-    return success
+    return success && !authStore.error
   }
 
   async function logout() {
