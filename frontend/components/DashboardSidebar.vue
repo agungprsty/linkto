@@ -24,6 +24,10 @@
           :class="route.path === '/dashboard/settings' ? 'bg-gray-100 text-black font-semibold' : 'text-gray-600 font-medium hover:bg-gray-50 hover:text-black transition-colors'">
           <Icon name="ph:paint-brush" class="text-xl" /> Appearance
         </NuxtLink>
+        <NuxtLink to="/dashboard/preview" class="flex items-center gap-3 px-4 py-3 rounded-xl"
+          :class="route.path === '/dashboard/preview' ? 'bg-gray-100 text-black font-semibold' : 'text-gray-600 font-medium hover:bg-gray-50 hover:text-black transition-colors'">
+          <Icon name="ph:eye" class="text-xl" /> Preview
+        </NuxtLink>
         <NuxtLink to="/dashboard/analytics" class="flex items-center gap-3 px-4 py-3 rounded-xl"
           :class="route.path === '/dashboard/analytics' ? 'bg-gray-100 text-black font-semibold' : 'text-gray-600 font-medium hover:bg-gray-50 hover:text-black transition-colors'">
           <Icon name="ph:chart-line-up" class="text-xl" /> Analytics
