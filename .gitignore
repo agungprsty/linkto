@@ -39,3 +39,4 @@ node_modules/
 frontend/node_modules/
 frontend/.nuxt/
 frontend/dist/
+frontend/.output/
