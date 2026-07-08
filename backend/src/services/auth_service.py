@@ -19,6 +19,7 @@ from src.core.security import (
     verify_password,
     verify_token,
 )
+from src.core.utils import generate_id
 from src.models.user import User
 from src.schemas.auth import RegisterRequest, LoginRequest
 
@@ -28,23 +29,25 @@ class AuthService:
 
     @staticmethod
     async def register(req: RegisterRequest) -> dict:
-        """Register a new user with email and password."""
+        """Register a new user with email and password.
+
+        Username is auto-generated using ULID for guaranteed uniqueness.
+        """
         # Check if email already exists
         existing_email = await User.find_one(User.email == req.email)
         if existing_email:
             raise DuplicateException("User", "email")
 
-        # Check if username already exists
-        existing_username = await User.find_one(User.username == req.username)
-        if existing_username:
-            raise DuplicateException("User", "username")
+        # Generate unique username using ULID
+        username = generate_id()
+        while await User.find_one(User.username == username):
+            username = generate_id()
 
         # Create user
         user = User(
-            username=req.username,
+            username=username,
             email=req.email,
             password_hash=hash_password(req.password),
-            profile={"full_name": req.full_name or ""},
         )
         await user.insert()
 

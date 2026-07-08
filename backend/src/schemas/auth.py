@@ -6,24 +6,14 @@ import re
 
 
 class RegisterRequest(BaseModel):
-    """Request schema for user registration."""
+    """Request schema for user registration.
 
-    username: str = Field(..., min_length=3, max_length=30, description="Unique username slug")
+    Only requires email and password.
+    Username is auto-generated using ULID for uniqueness.
+    """
+
     email: EmailStr = Field(..., description="User email address")
     password: str = Field(..., min_length=8, max_length=128, description="Password (min 8 chars)")
-    full_name: Optional[str] = Field(default=None, max_length=100)
-
-    @field_validator("username")
-    @classmethod
-    def validate_username(cls, v: str) -> str:
-        """Username must be alphanumeric with hyphens/underscores, 3-30 chars."""
-        v = v.strip().lower()
-        if not re.match(r"^[a-z0-9][a-z0-9_-]{1,28}[a-z0-9]$", v):
-            raise ValueError(
-                "Username must be 3-30 characters, start and end with "
-                "alphanumeric, and may contain hyphens or underscores"
-            )
-        return v
 
     @field_validator("password")
     @classmethod

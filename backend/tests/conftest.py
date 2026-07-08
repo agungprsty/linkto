@@ -76,12 +76,13 @@ async def clean_db():
 
 @pytest.fixture
 def sample_register_payload() -> dict:
-    """Sample payload for user registration."""
+    """Sample payload for user registration.
+
+    Only email and password are required — username is auto-generated via ULID.
+    """
     return {
-        "username": "testuser",
         "email": "test@example.com",
         "password": "Password1",
-        "full_name": "Test User",
     }
 
 

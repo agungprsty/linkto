@@ -9,7 +9,10 @@ class TestAuthRegister:
 
     @pytest.mark.asyncio
     async def test_register_success(self, client: AsyncClient, sample_register_payload: dict):
-        """Test successful user registration."""
+        """Test successful user registration.
+
+        Username should be auto-generated using ULID.
+        """
         response = await client.post("/api/v1/auth/register", json=sample_register_payload)
         assert response.status_code == 201
         data = response.json()
@@ -17,7 +20,8 @@ class TestAuthRegister:
         assert "refresh_token" in data
         assert data["token_type"] == "bearer"
         assert "expires_in" in data
-        assert data["user"]["username"] == sample_register_payload["username"]
+        # Username is auto-generated via ULID — should be 26 chars
+        assert len(data["user"]["username"]) == 26
         assert data["user"]["email"] == sample_register_payload["email"]
 
     @pytest.mark.asyncio
@@ -30,35 +34,9 @@ class TestAuthRegister:
         assert response.status_code == 409
 
     @pytest.mark.asyncio
-    async def test_register_duplicate_username(self, client: AsyncClient, sample_register_payload: dict):
-        """Test registration with existing username fails."""
-        # First registration
-        await client.post("/api/v1/auth/register", json=sample_register_payload)
-        # Try with same username but different email
-        payload = {
-            "username": sample_register_payload["username"],
-            "email": "other@example.com",
-            "password": "Password1",
-        }
-        response = await client.post("/api/v1/auth/register", json=payload)
-        assert response.status_code == 409
-
-    @pytest.mark.asyncio
-    async def test_register_invalid_username(self, client: AsyncClient):
-        """Test registration with invalid username."""
-        payload = {
-            "username": "ab",  # too short
-            "email": "test@example.com",
-            "password": "Password1",
-        }
-        response = await client.post("/api/v1/auth/register", json=payload)
-        assert response.status_code == 422
-
-    @pytest.mark.asyncio
     async def test_register_weak_password(self, client: AsyncClient):
         """Test registration with weak password (no letter)."""
         payload = {
-            "username": "testuser",
             "email": "test@example.com",
             "password": "12345678",  # no letters
         }
@@ -69,7 +47,6 @@ class TestAuthRegister:
     async def test_register_short_password(self, client: AsyncClient):
         """Test registration with short password."""
         payload = {
-            "username": "testuser",
             "email": "test@example.com",
             "password": "Sh0rt",  # too short
         }
@@ -163,7 +140,9 @@ class TestAuthMe:
         """Test getting current user profile with valid token."""
         # Register
         reg_resp = await client.post("/api/v1/auth/register", json=sample_register_payload)
-        access_token = reg_resp.json()["access_token"]
+        reg_data = reg_resp.json()
+        access_token = reg_data["access_token"]
+        expected_username = reg_data["user"]["username"]
 
         # Get profile
         response = await client.get(
@@ -172,7 +151,9 @@ class TestAuthMe:
         )
         assert response.status_code == 200
         data = response.json()
-        assert data["username"] == sample_register_payload["username"]
+        # Username is auto-generated via ULID — verify it matches registration response
+        assert len(data["username"]) == 26
+        assert data["username"] == expected_username
         assert data["email"] == sample_register_payload["email"]
 
     @pytest.mark.asyncio
