@@ -1,7 +1,7 @@
 import secrets
 from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, Request, Response
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response
 from fastapi.responses import RedirectResponse
 
 from src.core.config import settings
@@ -77,7 +77,7 @@ async def login(req: LoginRequest, response: Response):
 async def refresh_token(
     req: Optional[RefreshTokenRequest] = None,
     response: Response = None,
-    refresh_token_cookie: Optional[str] = None,
+    refresh_token: Optional[str] = Cookie(None),
 ):
     """Get a new access token using a refresh token.
 
@@ -87,8 +87,8 @@ async def refresh_token(
     token_str = None
     if req and req.refresh_token:
         token_str = req.refresh_token
-    elif refresh_token_cookie:
-        token_str = refresh_token_cookie
+    elif refresh_token:
+        token_str = refresh_token
 
     if not token_str:
         raise BadRequestException("Refresh token is required")
