@@ -7,6 +7,8 @@
 
 **Linkto** is a Link-in-Bio SaaS platform that allows creators, SMEs, and affiliates to create a single landing page consolidating all their important links. Fast loading, mobile-first, and built to scale.
 
+![Linkto](/index.html.png)
+
 ## Features
 
 - **User Authentication** — Email/password registration & login, Google OAuth, JWT access + refresh tokens
